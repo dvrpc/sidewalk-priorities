@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sidewalk Priorities</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <!-- <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet" -->
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+
+    <!-- <script src="https://unpkg.com/@turf/turf@6.3.0/turf.min.js"></script> -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div id="map">
+      <div id="headerblock">
+        <div class="box-overlay">
+          <h1>Sidewalk Priorities</h1>
+          <hr />
+          <p>
+            This map features essential services in Montgomery County identified
+            through DVRPC's
+            <a href="https://www.dvrpc.org/eta" , target="_blank">
+              "Equity Through Access" study </a
+            >.
+          </p>
+          <p>
+            Each point's color reflects the relative sizes of a 1-mile walkshed
+            using the sidewalk and OpenStreetMap networks. Green indicates that
+            the roads immediately around a location feature an accessible
+            sidewalk network, while red dots highlight locations where the
+            roadway network lacks sidewalks.
+          </p>
+
+          <hr />
+          <p>
+            Click on a single point to learn more about its network
+            accessibility, and select a different essential service category
+            using the drop-down list below.
+          </p>
+        </div>
+
+        <div class="box-overlay">
+          <h3>Select an essential service:</h3>
+          <p>
+            <select>
+              <option value="0" selected>Public Schools</option>
+              <option value="1">Private Schools</option>
+              <option value="2">Colleges/Universities</option>
+              <option value="3">Health Care Facilities</option>
+              <option value="4">Food Stores</option>
+              <option value="5">Activity Centers for Senior/Disabled</option>
+            </select>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script defer type="module" src="./js/index.js"></script>
+  </body>
+</html>

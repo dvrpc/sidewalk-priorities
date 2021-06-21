@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif !important;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.box-overlay {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid black;
+  box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.3);
+  margin-top: 2vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
+select {
+  max-width: 12vw;
+}
+
+#headerblock {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 18vw;
+  z-index: 1;
+}
+
+/* #infoblock {
+        position: absolute;
+        top: 10%;
+        left: 2%;
+        z-index: 2;
+    } */
+
+#graph {
+  position: absolute;
+  width: 20vw;
+  height: 90vh;
+  bottom: 5%;
+  right: 2%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+#station-name {
+  font-weight: bold;
+  text-align: center;
+  font-size: 110%;
+}
+
+#station-address {
+  text-transform: capitalize;
+  font-style: italic;
+  text-align: center;
+  font-size: 80%;
+}
+#data-text {
+  font-size: 75%;
+}
+
+hr {
+  color: white;
+}
+#screen-text {
+  display: none;
+  font-style: italic;
+}
+#legend-img {
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  #graph {
+    display: none;
+  }
+  #screen-text {
+    display: inline;
+  }
+  #headerblock {
+    width: 28vw;
+  }
+}
