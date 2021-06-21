@@ -1,0 +1,19 @@
+{
+  "name": "sidewalk-priorities",
+  "version": "1.0.0",
+  "description": "Web app that dynamically visualizes sidewalk improvement priorities, using Montgomery County as a case study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvrpc/sidewalk-priorities.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dvrpc/sidewalk-priorities/issues"
+  },
+  "homepage": "https://github.com/dvrpc/sidewalk-priorities#readme"
+}
