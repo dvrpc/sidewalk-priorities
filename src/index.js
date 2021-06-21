@@ -1,13 +1,14 @@
-import { data_sources } from "./sources.js";
+import "./css/style.css";
+import { data_sources } from "./js/sources.js";
 // import { urlRoot } from "./api";
 
-import { makeMap } from "./map.js";
+import { makeMap } from "./js/map.js";
 // import {
 //   wire_up_dropdown_selector,
 //   add_map_hover_styles,
 //   add_map_click_actions,
 // } from "./user_interaction";
-import { map_layers } from "./layers.js";
+import { map_layers } from "./js/layers.js";
 
 const map = makeMap();
 
