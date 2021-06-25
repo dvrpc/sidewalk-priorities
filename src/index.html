@@ -7,9 +7,9 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <!-- <link
+    <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
-      rel="stylesheet" -->
+      rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
 
@@ -29,8 +29,9 @@
           <h1>Sidewalk Priorities</h1>
           <hr />
           <p>
-            This map features essential services in Montgomery County identified
-            through DVRPC's
+            This map features a deep dive into the pedestrian accessibility of
+            essential services in Montgomery County that were identified through
+            DVRPC's
             <a href="https://www.dvrpc.org/eta" , target="_blank">
               "Equity Through Access" study </a
             >.
@@ -52,10 +53,11 @@
         </div>
 
         <div class="box-overlay">
-          <h3>Select an essential service:</h3>
+          <h3>Filter by essential service type:</h3>
           <p>
             <select>
-              <option value="0" selected>Public Schools</option>
+              <option value="-1" selected>(all)</option>
+              <option value="0">Public Schools</option>
               <option value="1">Private Schools</option>
               <option value="2">Colleges/Universities</option>
               <option value="3">Health Care Facilities</option>
