@@ -22,7 +22,7 @@ const map_layers = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "rgba(192, 192, 192, 0.5)",
+      "fill-color": "rgba(200, 200, 200, 0.5)",
       "fill-opacity": 0,
     },
     filter: osm_filter,
@@ -33,7 +33,7 @@ const map_layers = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "rgba(0, 255, 0, 0.5)",
+      "fill-color": "rgba(0, 255, 255, 0.5)",
       "fill-opacity": 0,
     },
     filter: sw_filter,
@@ -49,7 +49,7 @@ const map_layers = {
       "circle-opacity": 0,
       "circle-stroke-opacity": 0,
       "circle-stroke-width": 10,
-      "circle-stroke-color": "yellow",
+      "circle-stroke-color": "black",
     },
   },
   all_pois: {
@@ -68,6 +68,7 @@ const map_layers = {
         property: "ab_ratio",
         default: "black",
         stops: [
+          [-1, "rgba(255, 255, 255, 1)"],
           [0, "rgba(255, 0, 0, 1)"],
           [0.7, "rgba(255, 255, 0, 1)"],
           [1, "rgba(0, 153, 0, 1)"],
