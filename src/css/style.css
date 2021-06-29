@@ -1,3 +1,7 @@
+:root {
+  --popup-color: rgba(255, 255, 255, 0.7);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +24,13 @@ body {
   border: 1px solid black;
   box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.3);
   margin-top: 2vh;
+}
+
+.mapboxgl-popup-content {
+  background-color: var(--popup-color);
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: var(--popup-color);
 }
 
 h1,
