@@ -1,7 +1,7 @@
 import "./css/style.css";
 import { data_sources } from "./js/sources.js";
 import { poi_click } from "./js/clicks.js";
-
+import { wire_mouse_hover } from "./js/hover.js";
 // import { urlRoot } from "./api";
 
 import { makeMap } from "./js/map.js";
@@ -20,6 +20,7 @@ map.on("load", function () {
   for (const lyr in map_layers) map.addLayer(map_layers[lyr]);
 
   poi_click(map);
+  wire_mouse_hover(map);
 
   //   // Set hover interactions
   //   add_map_hover_styles(map);
