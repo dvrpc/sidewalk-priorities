@@ -8,10 +8,10 @@
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
     <!-- <script src="https://unpkg.com/@turf/turf@6.3.0/turf.min.js"></script> -->
 
@@ -55,14 +55,18 @@
         <div class="box-overlay">
           <h3>Filter by essential service type:</h3>
           <p>
-            <select>
-              <option value="-1" selected>(all)</option>
-              <option value="0">Public Schools</option>
-              <option value="1">Private Schools</option>
-              <option value="2">Colleges/Universities</option>
-              <option value="3">Health Care Facilities</option>
-              <option value="4">Food Stores</option>
-              <option value="5">Activity Centers for Senior/Disabled</option>
+            <select id="dropdown_category">
+              <option value="all" selected>(all)</option>
+              <option value="School - Public">Public Schools</option>
+              <option value="School - Private">Private Schools</option>
+              <option value="School - College, University">
+                Colleges/Universities
+              </option>
+              <option value="Health Facility">Health Care Facilities</option>
+              <option value="Food Store">Food Stores</option>
+              <option value="Activity Center for Seniors or Disabled">
+                Activity Centers for Senior/Disabled
+              </option>
             </select>
           </p>
         </div>
