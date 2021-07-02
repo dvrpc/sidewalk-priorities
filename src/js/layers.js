@@ -3,6 +3,38 @@ var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
 
 const map_layers = {
   // Show existing bike facilities with thin transparent green line
+  sw: {
+    id: "sw",
+    type: "line",
+    source: "sidewalk-tiles",
+    "source-layer": "ped_lines",
+    paint: {
+      "line-width": 4,
+      "line-opacity": 0.2,
+      "line-color": "purple",
+    },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+    filter: ["==", "line_type", 1],
+  },
+  xwalk: {
+    id: "xwalk",
+    type: "line",
+    source: "sidewalk-tiles",
+    "source-layer": "ped_lines",
+    paint: {
+      "line-width": 9,
+      "line-opacity": 0.2,
+      "line-color": "purple",
+    },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+    filter: ["==", "line_type", 2],
+  },
   montco: {
     id: "montco",
     type: "line",
