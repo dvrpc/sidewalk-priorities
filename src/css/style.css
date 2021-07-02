@@ -51,6 +51,7 @@ select {
   top: 2%;
   left: 2%;
   width: 18vw;
+  min-width: 200px;
   z-index: 1;
 }
 
