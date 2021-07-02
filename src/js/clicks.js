@@ -9,10 +9,10 @@ const poi_click = (map) => {
     var id_filter_as_string = ["in", "eta_uid", props.eta_uid.toString()];
 
     map.setFilter("iso_sw", ["all", id_filter_as_string, sw_filter]);
-    map.setPaintProperty("iso_sw", "fill-opacity", 0.9);
+    map.setPaintProperty("iso_sw", "fill-opacity", 0.4);
 
     map.setFilter("iso_osm", ["all", id_filter_as_string, osm_filter]);
-    map.setPaintProperty("iso_osm", "fill-opacity", 0.9);
+    map.setPaintProperty("iso_osm", "fill-opacity", 0.2);
 
     map.setFilter("selected_poi", id_filter);
     // map.setPaintProperty("selected_poi", "circle-opacity", 1);
