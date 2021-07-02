@@ -13,6 +13,12 @@ const bindPopup = (map, html_msg, click) => {
 
 const poi_message = (e) => {
   var props = e.features[0].properties;
+
+  var titleCasedName = props.name
+    .split(" ")
+    .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
+    .join(" ");
+
   var ratio = props.ab_ratio * 100;
   if (ratio > 100) {
     ratio = 100;
@@ -24,7 +30,9 @@ const poi_message = (e) => {
   } else {
     var ratio = String(ratio.toFixed(1)) + "%";
   }
-  return "<h1>" + ratio + "</h1><p>sidewalk coverage</p>";
+  return (
+    "<h1>" + titleCasedName + "</h1><h3>" + ratio + " sidewalk coverage</h3>"
+  );
 };
 
 export { bindPopup, poi_message };
