@@ -53,9 +53,10 @@ var dropdown = document.getElementById("dropdown_category");
 
 dropdown.addEventListener("change", function () {
   if (dropdown.value == "all") {
-    map.setFilter("all_pois");
+    // map.setFilter("all_pois");
+    var filter = null;
   } else {
     var filter = ["all", ["==", "type", dropdown.value]];
-    map.setFilter("all_pois", filter);
   }
+  map.setFilter("all_pois", filter);
 });
