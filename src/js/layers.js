@@ -3,38 +3,6 @@ var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
 
 const map_layers = {
   // Show existing bike facilities with thin transparent green line
-  sw: {
-    id: "sw",
-    type: "line",
-    source: "sidewalk-tiles",
-    "source-layer": "ped_lines",
-    paint: {
-      "line-width": 4,
-      "line-opacity": 0.2,
-      "line-color": "purple",
-    },
-    layout: {
-      // make layer visible by default
-      visibility: "visible",
-    },
-    filter: ["==", "line_type", 1],
-  },
-  xwalk: {
-    id: "xwalk",
-    type: "line",
-    source: "sidewalk-tiles",
-    "source-layer": "ped_lines",
-    paint: {
-      "line-width": 9,
-      "line-opacity": 0.2,
-      "line-color": "purple",
-    },
-    layout: {
-      // make layer visible by default
-      visibility: "visible",
-    },
-    filter: ["==", "line_type", 2],
-  },
   montco: {
     id: "montco",
     type: "line",
@@ -54,7 +22,7 @@ const map_layers = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "rgba(200, 200, 200, 0.5)",
+      "fill-color": "black",
       "fill-opacity": 0,
     },
     filter: osm_filter,
@@ -65,24 +33,42 @@ const map_layers = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "rgba(0, 255, 255, 0.5)",
+      "fill-color": "purple",
       "fill-opacity": 0,
     },
     filter: sw_filter,
   },
-  selected_poi: {
-    id: "selected_poi",
-    type: "circle",
-    source: "mcpcv1-tiles",
-    "source-layer": "eta_points",
-    layout: {},
+  sw: {
+    id: "sw",
+    type: "line",
+    source: "sidewalk-tiles",
+    "source-layer": "ped_lines",
     paint: {
-      "circle-radius": 20,
-      "circle-opacity": 0,
-      "circle-stroke-opacity": 0,
-      "circle-stroke-width": 10,
-      "circle-stroke-color": "black",
+      "line-width": 4,
+      "line-opacity": 0.2,
+      "line-color": "black",
     },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+    filter: ["==", "line_type", 1],
+  },
+  xwalk: {
+    id: "xwalk",
+    type: "line",
+    source: "sidewalk-tiles",
+    "source-layer": "ped_lines",
+    paint: {
+      "line-width": 9,
+      "line-opacity": 0.2,
+      "line-color": "black",
+    },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+    filter: ["==", "line_type", 2],
   },
   all_pois: {
     id: "all_pois",
@@ -107,6 +93,20 @@ const map_layers = {
           [2, "rgba(0, 153, 0, 1)"],
         ],
       },
+    },
+  },
+  selected_poi: {
+    id: "selected_poi",
+    type: "circle",
+    source: "mcpcv1-tiles",
+    "source-layer": "eta_points",
+    layout: {},
+    paint: {
+      "circle-radius": 20,
+      "circle-opacity": 0,
+      "circle-stroke-opacity": 0,
+      "circle-stroke-width": 8,
+      "circle-stroke-color": "black",
     },
   },
 };
