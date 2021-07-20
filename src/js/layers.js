@@ -52,7 +52,7 @@ const map_layers = {
       // make layer visible by default
       visibility: "visible",
     },
-    filter: ["==", "line_type", 1],
+    filter: ["all", ["==", "line_type", 1], ["==", "county", "MONTGOMERY"]],
   },
   xwalk: {
     id: "xwalk",
@@ -68,7 +68,7 @@ const map_layers = {
       // make layer visible by default
       visibility: "visible",
     },
-    filter: ["==", "line_type", 2],
+    filter: ["all", ["==", "line_type", 2], ["==", "county", "MONTGOMERY"]],
   },
   all_pois: {
     id: "all_pois",
