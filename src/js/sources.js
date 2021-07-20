@@ -9,7 +9,8 @@ const data_sources = {
   },
   "mcpcv1-tiles": {
     type: "vector",
-    url: "http://localhost:8081/data/mcpc_v1.json",
+    // url: "http://localhost:8081/data/mcpc_v1.json",
+    url: "https://tiles.dvrpc.org/data/sidewalk-priorities.json",
   },
 };
 export { data_sources };
