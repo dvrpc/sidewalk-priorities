@@ -1,11 +1,11 @@
 const data_sources = {
   "boundary-tiles": {
     type: "vector",
-    url: "https://www.tiles.dvrpc.org/data/census_boundaries.json",
+    url: "https://tiles.dvrpc.org/data/census_boundaries.json",
   },
   "sidewalk-tiles": {
     type: "vector",
-    url: "https://www.tiles.dvrpc.org/data/pedestrian-network.json",
+    url: "https://tiles.dvrpc.org/data/pedestrian-network.json",
   },
   "mcpcv1-tiles": {
     type: "vector",
