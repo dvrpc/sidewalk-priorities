@@ -2,12 +2,12 @@ const paint_props = {
   sidewalks: {
     id: "sw",
     attribute: "line-width",
-    style: ["interpolate", ["exponential", 0.5], ["zoom"], 10, 0.1, 17, 5],
+    style: ["interpolate", ["exponential", 0.5], ["zoom"], 10, 0.01, 17, 3],
   },
   crosswalks: {
     id: "xwalk",
     attribute: "line-width",
-    style: ["interpolate", ["exponential", 0.5], ["zoom"], 10, 0.5, 18, 12],
+    style: ["interpolate", ["exponential", 0.5], ["zoom"], 10, 0.05, 18, 6],
   },
   all_pois: {
     id: "all_pois",
