@@ -5,6 +5,7 @@ import { wire_mouse_hover } from "./js/hover.js";
 import { makeMap } from "./js/map.js";
 import { map_layers } from "./js/layers.js";
 import { paint_props } from "./js/paint_props";
+import { initialGeojsonLoad } from "./js/api.js";
 
 const map = makeMap();
 
@@ -15,22 +16,19 @@ map.on("load", function () {
   var base_layers = map.getStyle().layers;
   var firstSymbolId;
 
-  console.log(map.getStyle());
   for (var i = 0; i < base_layers.length; i++) {
-    console.log(base_layers[i]);
     if (base_layers[i].type === "symbol") {
       firstSymbolId = base_layers[i].id;
       break;
     }
   }
 
-  console.log("FIRST SYMBOL ID!!!");
-
-  console.log(firstSymbolId);
-
   // Add map data sources and layer styling
   for (const src in data_sources) map.addSource(src, data_sources[src]);
   for (const lyr in map_layers) map.addLayer(map_layers[lyr], "road-label");
+
+  // Add initial geojson layer from API
+  initialGeojsonLoad(map, "road-label");
 
   // Load scale-based paint properties
   for (const paint in paint_props)
@@ -76,4 +74,26 @@ dropdown.addEventListener("change", function () {
     var filter = ["==", "type", dropdown.value];
   }
   map.setFilter("all_pois", filter);
+
+  // Filter out the selected layers so no features appear
+  map.setFilter("iso_sw", ["==", "src_network", "none"]);
+  map.setFilter("iso_osm", ["==", "src_network", "none"]);
+  map.setFilter("selected_poi", ["==", "type", "none"]);
+
+  // Hide the distance selection slider
+  var sliderbox = document.getElementById("slider-box");
+  sliderbox.style.setProperty("visibility", "hidden");
+
+  // Remove any popups that may exist
+  const popup = document.getElementsByClassName("mapboxgl-popup");
+  if (popup.length) {
+    popup[0].remove();
+  }
+
+  // Fly back to county zoom level
+  map.flyTo({
+    center: [-75.36277290123333, 40.201296611075346],
+    zoom: 10,
+    essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+  });
 });
