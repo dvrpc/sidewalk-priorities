@@ -1,7 +1,19 @@
-const URL_BASE = "http://localhost:8000";
+const api_url_base = () => {
+  var current_env = process.env.NODE_ENV;
+
+  if (current_env == "development") {
+    var url = "http://localhost:8000";
+  } else {
+    var url = "https://omad-api-lf2k9.ondigitalocean.app";
+  }
+
+  console.log("Env is " + current_env);
+  console.log("URL is ", url);
+  return url;
+};
 
 const initialGeojsonLoad = (map, firstSymbolId) => {
-  let url = URL_BASE + "/sidewalk/nearby-gaps/?q=1007";
+  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=1007";
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
@@ -35,7 +47,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
 };
 
 const reloadGeojson = (map, eta_uid) => {
-  let url = URL_BASE + "/sidewalk/nearby-gaps/?q=" + eta_uid;
+  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=" + eta_uid;
 
   // make a GET request to parse the GeoJSON at the url
   // alert("Inside the reload block");
