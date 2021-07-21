@@ -31,7 +31,7 @@ const poi_message = (e) => {
     var ratio = String(ratio.toFixed(1)) + "%";
   }
   return (
-    "<h1>" + titleCasedName + "</h1><h3>" + ratio + " sidewalk coverage</h3>"
+    "<h3>" + titleCasedName + "</h3><p>" + ratio + " sidewalk coverage</p>"
   );
 };
 
