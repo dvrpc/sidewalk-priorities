@@ -81,9 +81,9 @@ const map_layers_group_2 = {
     paint: {
       "circle-radius": 6,
       "circle-opacity": 0.6,
-      "circle-stroke-opacity": 1,
+      "circle-stroke-opacity": 0.6,
       "circle-stroke-color": "black",
-      "circle-stroke-width": 1.5,
+      "circle-stroke-width": 1,
       "circle-color": {
         property: "ab_ratio",
         default: "black",
@@ -105,11 +105,23 @@ const map_layers_group_2 = {
     layout: {},
     paint: {
       "circle-radius": 20,
-      "circle-opacity": 0,
+      "circle-opacity": 1,
       "circle-stroke-opacity": 0,
       "circle-stroke-width": 8,
       "circle-stroke-color": "black",
+      "circle-color": {
+        property: "ab_ratio",
+        default: "black",
+        stops: [
+          [-1, "rgba(255, 255, 255, 1)"],
+          [0, "rgba(255, 0, 0, 1)"],
+          [0.7, "rgba(255, 255, 0, 1)"],
+          [1, "rgba(0, 153, 0, 1)"],
+          [2, "rgba(0, 153, 0, 1)"],
+        ],
+      },
     },
+    filter: ["==", "type", "none - this filter should return zero results"],
   },
 };
 
