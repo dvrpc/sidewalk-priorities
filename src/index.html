@@ -27,35 +27,40 @@
       <div id="headerblock">
         <div class="box-overlay">
           <h1>Sidewalk Priorities:</h1>
-          <h2 id="subtitle">All Points of Interest</h2>
+          <h2 id="subtitle" class="green-text">All Points of Interest</h2>
 
           <hr />
           <p>
             This map features a deep dive into the pedestrian accessibility of
-            essential services in Montgomery County. These points of interest
-            were identified through DVRPC's
-            <a href="https://www.dvrpc.org/eta" , target="_blank">
-              "Equity Through Access" study </a
-            >.
+            essential services in Montgomery County. These services were
+            identified by combining:
           </p>
-          <hr />
-          <p>
-            Each point's color reflects the relative sizes of a 1-mile walkshed
-            using the sidewalk and OpenStreetMap networks. Green indicates that
-            the roads immediately around a location feature an accessible
-            sidewalk network, while red dots highlight locations where the
-            roadway network lacks sidewalks.
-          </p>
+          <ul>
+            <li>
+              Points of interest from DVRPC's
+              <a href="https://www.dvrpc.org/eta" target="_blank"
+                >"Equity Through Access"</a
+              >
+              study
+            </li>
 
-          <hr />
+            <li>
+              Schools, libraries, municipal buildings, and historic sites from
+              Montgomery County's
+              <a
+                href="https://data-montcopa.opendata.arcgis.com/"
+                target="_blank"
+                >open data portal</a
+              >
+            </li>
+          </ul>
           <p>
             Click on a single point to learn more about its network
             accessibility, and select a different essential service category
             using the drop-down list below.
           </p>
-        </div>
+          <hr />
 
-        <div class="box-overlay">
           <h3>Filter by essential service type:</h3>
           <p>
             <select id="dropdown_category">
@@ -74,23 +79,24 @@
           </p>
         </div>
 
-        <div id="slider-box" class="box-overlay">
-          <h3>
-            Show sidewalk gaps within
-            <span id="mile-text">XXX miles</span>
-          </h3>
-
-          <div class="slidecontainer">
-            <input
-              type="range"
-              min="1"
-              max="3"
-              value="1.5"
-              step="0.25"
-              class="slider"
-              id="myRange"
-            />
+        <div id="info-box" class="box-overlay">
+          <h3 id="selected-poi-name" class="green-text">Placeholder name</h3>
+          <p id="selected-poi-ratio">Placeholder percentage</p>
+          <div id="graph-box">
+            placeholder for graph that summarizes the yellow lines
           </div>
+        </div>
+      </div>
+
+      <div id="legendblock">
+        <div class="box-overlay">
+          <p>
+            Each point's color reflects the relative sizes of a 1-mile walkshed
+            using the sidewalk and OpenStreetMap networks. Green indicates that
+            the roads immediately around a location feature an accessible
+            sidewalk network, while red dots highlight locations where the
+            roadway network lacks sidewalks.
+          </p>
         </div>
       </div>
     </div>
