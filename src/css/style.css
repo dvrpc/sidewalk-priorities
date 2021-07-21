@@ -1,5 +1,5 @@
 :root {
-  --popup-color: rgba(255, 255, 255, 0.7);
+  --popup-color: rgba(255, 255, 255, 0.85);
   --green: #04aa6d;
 }
 
@@ -26,6 +26,15 @@ body {
   z-index: 0;
 }
 
+#headerblock {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 22.2vw;
+  min-width: 200px;
+  z-index: 1;
+}
+
 .box-overlay {
   padding-left: 15px;
   padding-right: 15px;
@@ -33,6 +42,10 @@ body {
   border: 1px solid black;
   box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.3);
   margin-top: 2vh;
+}
+
+select {
+  width: 100% !important;
 }
 
 .mapboxgl-popup-content {
@@ -48,19 +61,6 @@ h3,
 h4,
 h5 {
   font-weight: 500;
-}
-
-select {
-  max-width: 12vw;
-}
-
-#headerblock {
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  width: 18vw;
-  min-width: 200px;
-  z-index: 1;
 }
 
 /* #infoblock {
@@ -154,6 +154,10 @@ hr {
 #mile-text {
   color: var(--green);
 }
+#subtitle {
+  color: var(--green);
+}
+
 @media only screen and (max-width: 600px) {
   #graph {
     display: none;
