@@ -35,6 +35,15 @@ body {
   z-index: 1;
 }
 
+#legendblock {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 10vw;
+  min-width: 200px;
+  z-index: 1;
+}
+
 .box-overlay {
   padding-left: 15px;
   padding-right: 15px;
@@ -63,6 +72,14 @@ h5 {
   font-weight: 500;
 }
 
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #000000; /* old IE */
+  background-color: #000000; /* Modern Browsers */
+}
+
 /* #infoblock {
         position: absolute;
         top: 10%;
@@ -70,92 +87,23 @@ h5 {
         z-index: 2;
     } */
 
-#graph {
-  position: absolute;
-  width: 20vw;
-  height: 90vh;
-  bottom: 5%;
-  right: 2%;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 2px 2px 8px 8px rgba(0, 0, 0, 0.3);
-}
-
-#station-name {
-  font-weight: bold;
-  text-align: center;
-  font-size: 110%;
-}
-
-#station-address {
-  text-transform: capitalize;
-  font-style: italic;
-  text-align: center;
-  font-size: 80%;
-}
-#data-text {
-  font-size: 75%;
-}
-
-hr {
-  color: white;
-}
-#screen-text {
-  display: none;
-  font-style: italic;
-}
-#legend-img {
-  max-width: 100%;
-}
-
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
-/* The slider itself */
-.slider {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  width: 100%; /* Full-width */
-  height: 15px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-  margin-bottom: 10px;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-#slider-box {
+#info-box {
   visibility: hidden;
+  text-align: center;
 }
 
-#mile-text {
+#selected-poi-ratio {
+  font-style: italic;
+}
+.green-text {
   color: var(--green);
 }
-#subtitle {
-  color: var(--green);
+
+#graph-box {
+  background-color: #10f6a2;
+  min-height: 200px;
+  min-width: 100%;
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 600px) {
