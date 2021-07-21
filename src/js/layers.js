@@ -1,7 +1,7 @@
 var sw_filter = ["all", ["==", "src_network", "pedestriannetwork_lines"]];
 var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
 
-const map_layers = {
+const map_layers_group_1 = {
   // Show existing bike facilities with thin transparent green line
   montco: {
     id: "montco",
@@ -38,6 +38,8 @@ const map_layers = {
     },
     filter: sw_filter,
   },
+};
+const map_layers_group_2 = {
   sw: {
     id: "sw",
     type: "line",
@@ -111,4 +113,4 @@ const map_layers = {
   },
 };
 
-export { map_layers, sw_filter, osm_filter };
+export { map_layers_group_1, map_layers_group_2, sw_filter, osm_filter };

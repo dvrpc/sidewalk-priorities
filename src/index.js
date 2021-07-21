@@ -3,7 +3,7 @@ import { data_sources } from "./js/sources.js";
 import { poi_click } from "./js/clicks.js";
 import { wire_mouse_hover } from "./js/hover.js";
 import { makeMap } from "./js/map.js";
-import { map_layers } from "./js/layers.js";
+import { map_layers_group_1, map_layers_group_2 } from "./js/layers.js";
 import { paint_props } from "./js/paint_props";
 import { initialGeojsonLoad } from "./js/api.js";
 
@@ -13,22 +13,27 @@ map.on("load", function () {
   // Find the index of the first symbol layer in the map style
   // This becomes an argument in map.addLayer and allows the
   // basemap labels to draw on top of the vector layers
-  var base_layers = map.getStyle().layers;
-  var firstSymbolId;
+  // var base_layers = map.getStyle().layers;
+  // var firstSymbolId;
 
-  for (var i = 0; i < base_layers.length; i++) {
-    if (base_layers[i].type === "symbol") {
-      firstSymbolId = base_layers[i].id;
-      break;
-    }
-  }
+  // for (var i = 0; i < base_layers.length; i++) {
+  //   if (base_layers[i].type === "symbol") {
+  //     firstSymbolId = base_layers[i].id;
+  //     break;
+  //   }
+  // }
 
   // Add map data sources and layer styling
   for (const src in data_sources) map.addSource(src, data_sources[src]);
-  for (const lyr in map_layers) map.addLayer(map_layers[lyr], "road-label");
+  for (const lyr in map_layers_group_1)
+    map.addLayer(map_layers_group_1[lyr], "road-label");
 
   // Add initial geojson layer from API
   initialGeojsonLoad(map, "road-label");
+
+  // Add additional tilesets on top of geojson API layer
+  for (const lyr in map_layers_group_2)
+    map.addLayer(map_layers_group_2[lyr], "road-label");
 
   // Load scale-based paint properties
   for (const paint in paint_props)
@@ -79,6 +84,7 @@ dropdown.addEventListener("change", function () {
   map.setFilter("iso_sw", ["==", "src_network", "none"]);
   map.setFilter("iso_osm", ["==", "src_network", "none"]);
   map.setFilter("selected_poi", ["==", "type", "none"]);
+  map.setPaintProperty("missing-links-for-selected-poi", "line-opacity", 0);
 
   // Hide the distance selection slider
   var sliderbox = document.getElementById("slider-box");
