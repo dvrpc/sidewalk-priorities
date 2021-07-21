@@ -87,7 +87,7 @@ dropdown.addEventListener("change", function () {
   map.setPaintProperty("missing-links-for-selected-poi", "line-opacity", 0);
 
   // Hide the distance selection slider
-  var sliderbox = document.getElementById("slider-box");
+  var sliderbox = document.getElementById("info-box");
   sliderbox.style.setProperty("visibility", "hidden");
 
   // Remove any popups that may exist
