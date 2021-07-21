@@ -1,4 +1,9 @@
 const paint_props = {
+  /**
+   * This is where scale-driven paint properties are defined.
+   *
+   * Each entry requires the layer id, attribute name, and style expression.
+   */
   sidewalks: {
     id: "sw",
     attribute: "line-width",

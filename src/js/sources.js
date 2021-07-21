@@ -1,4 +1,7 @@
 const data_sources = {
+  /**
+   * URL configurations for all tilesets used in this map
+   */
   "boundary-tiles": {
     type: "vector",
     url: "https://tiles.dvrpc.org/data/census_boundaries.json",

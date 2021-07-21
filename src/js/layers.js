@@ -2,7 +2,11 @@ var sw_filter = ["all", ["==", "src_network", "pedestriannetwork_lines"]];
 var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
 
 const map_layers_group_1 = {
-  // Show existing bike facilities with thin transparent green line
+  /**
+   * This defines the layers that appear UNDERNEATH the API's missing links layer
+   *
+   * Each entry has properties that are accepted by the map.addLayer() function
+   */
   montco: {
     id: "montco",
     type: "line",
@@ -39,7 +43,14 @@ const map_layers_group_1 = {
     filter: sw_filter,
   },
 };
+
 const map_layers_group_2 = {
+  /**
+   * This defines the layers that appear ABOVE the API's missing links layer
+   *
+   * Each entry has properties that are accepted by the map.addLayer() function
+   */
+
   sw: {
     id: "sw",
     type: "line",
