@@ -24,7 +24,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           paint: {
             "line-width": 4,
             "line-opacity": 0,
-            "line-color": "#000000",
+            "line-color": "yellow",
           },
         },
         firstSymbolId
