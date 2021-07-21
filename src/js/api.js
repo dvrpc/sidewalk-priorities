@@ -6,9 +6,6 @@ const api_url_base = () => {
   } else {
     var url = "https://omad-api-lf2k9.ondigitalocean.app";
   }
-
-  console.log("Env is " + current_env);
-  console.log("URL is ", url);
   return url;
 };
 
