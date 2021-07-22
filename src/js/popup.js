@@ -19,4 +19,12 @@ const bindPopup = (map, html_msg, click) => {
   popup.setLngLat(click.lngLat).setHTML(html_msg).addTo(map);
 };
 
-export { bindPopup };
+const clearPopups = () => {
+  // Remove any popups that may exist
+  var popup = document.getElementsByClassName("mapboxgl-popup");
+  if (popup.length) {
+    popup[0].remove();
+  }
+};
+
+export { bindPopup, clearPopups };

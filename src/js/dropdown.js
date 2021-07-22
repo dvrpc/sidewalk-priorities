@@ -1,3 +1,5 @@
+import { clearPopups } from "./popup.js";
+
 const wire_dropdown_behavior = (map) => {
   /**
    * Set up the behavior for the dropdown selector
@@ -47,11 +49,7 @@ const wire_dropdown_behavior = (map) => {
     var infoBox = document.getElementById("info-box");
     infoBox.style.setProperty("visibility", "hidden");
 
-    // Remove any popups that may exist
-    const popup = document.getElementsByClassName("mapboxgl-popup");
-    if (popup.length) {
-      popup[0].remove();
-    }
+    clearPopups();
 
     // Fly back to county zoom level
     map.flyTo({
