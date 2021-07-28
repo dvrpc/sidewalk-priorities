@@ -1,3 +1,5 @@
+import { color_codes } from "./colors.js";
+
 var sw_filter = ["all", ["==", "src_network", "pedestriannetwork_lines"]];
 var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
 
@@ -26,7 +28,7 @@ const map_layers_group_1 = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "black",
+      "fill-color": "rgba(" + color_codes.osm + ", 0.5)",
       "fill-opacity": 0,
     },
     filter: osm_filter,
@@ -37,7 +39,7 @@ const map_layers_group_1 = {
     source: "mcpcv1-tiles",
     "source-layer": "eta_isos",
     paint: {
-      "fill-color": "purple",
+      "fill-color": "rgba(" + color_codes.sidewalk + ", 0.5)",
       "fill-opacity": 0,
     },
     filter: sw_filter,
