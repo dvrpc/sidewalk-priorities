@@ -21,7 +21,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "testing 213123123123",
+      title: "Sidewalk Priorities",
       template: path.resolve(__dirname, "./src/index.html"),
       filename: "index.html",
     }),
