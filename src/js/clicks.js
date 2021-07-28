@@ -1,8 +1,9 @@
 import { sw_filter, osm_filter } from "./layers.js";
 import { reloadGeojson } from "./api.js";
 import { title_cased_text, convert_ratio_to_text } from "./text.js";
+import { update_graph_with_api_data } from "./graph.js";
 
-const poi_click = (map) => {
+const poi_click = (map, graph) => {
   /**
    * Handle click events for the 'all_pois' layer
    * Steps after user clicks:
@@ -22,6 +23,8 @@ const poi_click = (map) => {
 
     // Get links within walkshed from API
     reloadGeojson(map, props.eta_uid);
+
+    update_graph_with_api_data(graph, props.eta_uid);
 
     map.setFilter("iso_sw", ["all", id_filter_as_string, sw_filter]);
     map.setFilter("iso_osm", ["all", id_filter_as_string, osm_filter]);
@@ -45,8 +48,8 @@ const poi_click = (map) => {
       convert_ratio_to_text(props.ab_ratio) + " sidewalk coverage";
 
     // Allow the filtered layers to appear
-    map.setPaintProperty("iso_sw", "fill-opacity", 0.4);
-    map.setPaintProperty("iso_osm", "fill-opacity", 0.2);
+    map.setPaintProperty("iso_sw", "fill-opacity", 0.7);
+    map.setPaintProperty("iso_osm", "fill-opacity", 0.7);
     map.setPaintProperty("selected_poi", "circle-stroke-opacity", 1);
 
     // Show the info box for this POI
