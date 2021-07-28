@@ -27,7 +27,9 @@ const poi_click = (map, graph) => {
     update_graph_with_api_data(graph, props.eta_uid);
 
     map.setFilter("iso_sw", ["all", id_filter_as_string, sw_filter]);
+    map.setFilter("iso_sw_outline", ["all", id_filter_as_string, sw_filter]);
     map.setFilter("iso_osm", ["all", id_filter_as_string, osm_filter]);
+    map.setFilter("iso_osm_outline", ["all", id_filter_as_string, osm_filter]);
     map.setFilter("selected_poi", id_filter);
 
     map.flyTo({
@@ -50,6 +52,10 @@ const poi_click = (map, graph) => {
     // Allow the filtered layers to appear
     map.setPaintProperty("iso_sw", "fill-opacity", 0.7);
     map.setPaintProperty("iso_osm", "fill-opacity", 0.7);
+
+    map.setPaintProperty("iso_sw_outline", "line-opacity", 0.9);
+    map.setPaintProperty("iso_osm_outline", "line-opacity", 0.9);
+
     map.setPaintProperty("selected_poi", "circle-stroke-opacity", 1);
 
     // Show the info box for this POI

@@ -33,6 +33,19 @@ const map_layers_group_1 = {
     },
     filter: osm_filter,
   },
+  iso_osm_outline: {
+    id: "iso_osm_outline",
+    type: "line",
+    source: "mcpcv1-tiles",
+    "source-layer": "eta_isos",
+    paint: {
+      "line-color": "rgba(" + color_codes.osm + ", 0.5)",
+      "line-opacity": 0,
+      "line-width": 3,
+      "line-dasharray": [2, 1.5, 1, 1.5],
+    },
+    filter: osm_filter,
+  },
   iso_sw: {
     id: "iso_sw",
     type: "fill",
@@ -41,6 +54,19 @@ const map_layers_group_1 = {
     paint: {
       "fill-color": "rgba(" + color_codes.sidewalk + ", 0.5)",
       "fill-opacity": 0,
+    },
+    filter: sw_filter,
+  },
+  iso_sw_outline: {
+    id: "iso_sw_outline",
+    type: "line",
+    source: "mcpcv1-tiles",
+    "source-layer": "eta_isos",
+    paint: {
+      "line-color": "rgba(" + color_codes.sidewalk + ", 0.5)",
+      "line-opacity": 0,
+      "line-width": 3,
+      "line-dasharray": [2, 1.5, 1, 1.5],
     },
     filter: sw_filter,
   },
