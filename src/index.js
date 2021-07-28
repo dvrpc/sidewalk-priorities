@@ -7,8 +7,10 @@ import { map_layers_group_1, map_layers_group_2 } from "./js/layers.js";
 import { paint_props } from "./js/paint_props";
 import { initialGeojsonLoad } from "./js/api.js";
 import { wire_dropdown_behavior } from "./js/dropdown";
+import { update_graph_with_api_data, makeGraph } from "./js/graph.js";
 
 const map = makeMap();
+const bar_chart = makeGraph();
 
 map.on("load", function () {
   /**
@@ -23,6 +25,8 @@ map.on("load", function () {
    *  - Wire up click and hover events
    *  - Wire up dropdown selector
    */
+
+  update_graph_with_api_data(bar_chart, "1007");
 
   // Add map data sources and layer styling
   for (const src in data_sources) map.addSource(src, data_sources[src]);
@@ -45,7 +49,7 @@ map.on("load", function () {
     );
 
   // Wire up click and hover interactions
-  poi_click(map);
+  poi_click(map, bar_chart);
   wire_mouse_hover(map);
 
   // Wire up the dropdown behavior
