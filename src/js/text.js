@@ -6,10 +6,15 @@ const title_cased_text = (badly_formatted_text) => {
    * @param {string} badly_formatted_text - Input text
    * @return {string}
    */
-  return badly_formatted_text
-    .split(" ")
-    .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
-    .join(" ");
+  try {
+    var txt = badly_formatted_text
+      .split(" ")
+      .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
+      .join(" ");
+  } catch {
+    var txt = badly_formatted_text;
+  }
+  return txt;
 };
 
 const convert_ratio_to_text = (ratio_as_float) => {
