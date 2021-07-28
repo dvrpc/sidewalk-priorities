@@ -91,4 +91,4 @@ const reloadGeojson = (map, eta_uid) => {
   request.send();
 };
 
-export { reloadGeojson, initialGeojsonLoad };
+export { reloadGeojson, initialGeojsonLoad, api_url_base };
