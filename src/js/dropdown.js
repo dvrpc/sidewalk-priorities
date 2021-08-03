@@ -42,6 +42,8 @@ const wire_dropdown_behavior = (map) => {
     // Filter out the selected layers so no features appear
     map.setFilter("iso_sw", ["==", "src_network", "none"]);
     map.setFilter("iso_osm", ["==", "src_network", "none"]);
+    map.setFilter("iso_sw_outline", ["==", "src_network", "none"]);
+    map.setFilter("iso_osm_outline", ["==", "src_network", "none"]);
     map.setFilter("selected_poi", ["==", "type", "none"]);
     map.setPaintProperty("missing-links-for-selected-poi", "line-opacity", 0);
 
