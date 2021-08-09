@@ -48,9 +48,17 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           type: "line",
           source: "missing-links",
           paint: {
-            "line-width": 4,
             "line-opacity": 0,
             "line-color": "yellow",
+            "line-width": {
+              property: "island_count",
+              default: 100,
+              stops: [
+                [0, 1],
+                [1, 5],
+                [2, 10],
+              ],
+            },
           },
         },
         firstSymbolId
