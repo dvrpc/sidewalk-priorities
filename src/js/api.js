@@ -10,7 +10,7 @@ const api_url_base = () => {
   var current_env = process.env.NODE_ENV;
 
   if (current_env == "development") {
-    var url = "http://localhost:8000";
+    var url = "https://omad-api-lf2k9.ondigitalocean.app";
   } else {
     var url = "https://omad-api-lf2k9.ondigitalocean.app";
   }
@@ -49,7 +49,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           source: "missing-links",
           paint: {
             "line-opacity": 0,
-            "line-color": "yellow",
+            "line-color": "blue",
             "line-width": {
               property: "island_count",
               default: 100,
