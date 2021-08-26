@@ -35,13 +35,17 @@ body {
   z-index: 1;
 }
 
+table {
+  width: 100%;
+}
+
 /* updated vw from 22.5 to 29 to fit on laptop screen-MM */
 
 #legendblock {
   position: absolute;
   top: 2%;
   right: 2%;
-  width: 15vw;
+  width: 19vw;
   min-width: 300px;
   z-index: 1;
 }
