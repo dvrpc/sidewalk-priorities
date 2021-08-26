@@ -1,4 +1,4 @@
-import { title_cased_text } from "./text.js";
+import { title_cased_text, convert_ratio_to_text } from "./text.js";
 import { bindPopup, clearPopups } from "./popup.js";
 
 const wire_single_layer = (map, layername) => {
@@ -37,7 +37,11 @@ const wire_mouse_hover = (map) => {
   // Add popup with name of POI when hovering
   map.on("mouseenter", "all_pois", function (e) {
     var props = e.features[0].properties;
-    var msg = "<h3>" + title_cased_text(props.name) + "</h3>";
+    var msg = "<h3>" + title_cased_text(props.poi_name) + "</h3>";
+    msg +=
+      "<p style='text-align: center;'>" +
+      convert_ratio_to_text(props.ab_ratio) +
+      " sidewalk coverage</p>";
     bindPopup(map, msg, e);
   });
 

@@ -37,6 +37,8 @@ const convert_ratio_to_text = (ratio_as_float) => {
     var ratio_text = "100%";
   } else if (ratio_multiplied == 0) {
     var ratio_text = "No";
+  } else if (ratio_multiplied < 0) {
+    var ratio_text = "Only";
   } else {
     var ratio_text = String(ratio_multiplied.toFixed(1)) + "%";
   }
