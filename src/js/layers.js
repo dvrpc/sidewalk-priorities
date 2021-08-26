@@ -1,7 +1,7 @@
 import { color_codes } from "./colors.js";
 
 var sw_filter = ["all", ["==", "src_network", "pedestriannetwork_lines"]];
-var osm_filter = ["all", ["==", "src_network", "osm_edges_all"]];
+var osm_filter = ["all", ["==", "src_network", "osm_edges_all_no_motorway"]];
 
 const map_layers_group_1 = {
   /**
@@ -26,7 +26,7 @@ const map_layers_group_1 = {
     id: "iso_osm",
     type: "fill",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_isos",
+    "source-layer": "mcpc_isos",
     paint: {
       "fill-color": "rgba(" + color_codes.osm + ", 0.5)",
       "fill-opacity": 0,
@@ -37,7 +37,7 @@ const map_layers_group_1 = {
     id: "iso_osm_outline",
     type: "line",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_isos",
+    "source-layer": "mcpc_isos",
     paint: {
       "line-color": "rgba(" + color_codes.osm + ", 0.5)",
       "line-opacity": 0,
@@ -50,7 +50,7 @@ const map_layers_group_1 = {
     id: "iso_sw",
     type: "fill",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_isos",
+    "source-layer": "mcpc_isos",
     paint: {
       "fill-color": "rgba(" + color_codes.sidewalk + ", 0.5)",
       "fill-opacity": 0,
@@ -61,7 +61,7 @@ const map_layers_group_1 = {
     id: "iso_sw_outline",
     type: "line",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_isos",
+    "source-layer": "mcpc_isos",
     paint: {
       "line-color": "rgba(" + color_codes.sidewalk + ", 0.5)",
       "line-opacity": 0,
@@ -115,7 +115,7 @@ const map_layers_group_2 = {
     id: "all_pois",
     type: "circle",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_points",
+    "source-layer": "mcpc_combined_pois",
     layout: {},
     paint: {
       "circle-radius": 6,
@@ -127,9 +127,11 @@ const map_layers_group_2 = {
         property: "ab_ratio",
         default: "black",
         stops: [
+          [0, "rgba(0, 0, 0, 1)"],
           [0.0001, "rgba(255, 0, 0, 1)"],
+          [0.1, "rgba(255, 153, 0, 1)"],
           [0.5, "rgba(255, 255, 0, 1)"],
-          [.75, "rgba(0, 153, 0, 1)"],
+          // [0.75, "rgba(0, 153, 0, 1)"],
           [1, "rgba(0, 153, 0, 1)"],
           // [0.0001, "rgba(255, 0, 0, 1)"],
           // [0.7, "rgba(255, 255, 0, 1)"],
@@ -143,25 +145,26 @@ const map_layers_group_2 = {
     id: "selected_poi",
     type: "circle",
     source: "mcpcv1-tiles",
-    "source-layer": "eta_points",
+    "source-layer": "mcpc_combined_pois",
     layout: {},
     paint: {
       "circle-radius": 20,
-      "circle-opacity": 1,
+      "circle-opacity": 0,
       "circle-stroke-opacity": 0,
       "circle-stroke-width": 8,
       "circle-stroke-color": "black",
-      "circle-color": {
-        property: "ab_ratio",
-        default: "black",
-        stops: [
-          [-1, "rgba(255, 255, 255, 1)"],
-          [0, "rgba(255, 0, 0, 1)"],
-          [0.7, "rgba(255, 255, 0, 1)"],
-          [1, "rgba(0, 153, 0, 1)"],
-          [2, "rgba(0, 153, 0, 1)"],
-        ],
-      },
+      // "circle-color": {
+      //   property: "ab_ratio",
+      //   default: "black",
+      //   stops: [
+      //     [0, "rgba(0, 0, 0, 1)"],
+      //     [0.0001, "rgba(255, 0, 0, 1)"],
+      //     [0.1, "rgba(255, 153, 0, 1)"],
+      //     [0.5, "rgba(255, 255, 0, 1)"],
+      //     // [0.75, "rgba(0, 153, 0, 1)"],
+      //     [1, "rgba(0, 153, 0, 1)"],
+      //   ],
+      // },
     },
     filter: ["==", "type", "none - this filter should return zero results"],
   },
