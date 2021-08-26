@@ -68,15 +68,15 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
   request.send();
 };
 
-const reloadGeojson = (map, eta_uid) => {
+const reloadGeojson = (map, poi_uid) => {
   /**
    * Update the geojson layer from the API response
    * Set the line-opacity to 0.5 after successfully loading the JSON data
    *
    * @param {mapboxgl.Map} map - The map object for the page
-   * @param {number} eta_uid - This is the ID value for the specific POI
+   * @param {number} poi_uid - This is the ID value for the specific POI
    */
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=" + eta_uid;
+  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=" + poi_uid;
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
