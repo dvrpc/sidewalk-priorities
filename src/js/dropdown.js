@@ -18,13 +18,17 @@ const wire_dropdown_behavior = (map) => {
 
   var subtitle_text = {
     all: "All Points of Interest",
-    "School - Public": "Public Schools",
-    "School - Private": "Private Schools",
+    "Public School": "Public Schools",
+    "Private School": "Private Schools",
     "School - College, University": "Colleges/Universities",
     "Health Facility": "Health Care Facilities",
     "Food Store": "Food Stores",
     "Activity Center for Seniors or Disabled":
       "Activity Centers for Senior/Disabled",
+    "Municipal Buildings": "Municipal Buildings",
+    trailhead: "Trailheads",
+    Libraries: "Libraries",
+    "Shopping Centers": "Shopping Centers",
   };
 
   dropdown.addEventListener("change", function () {
@@ -35,7 +39,7 @@ const wire_dropdown_behavior = (map) => {
       // map.setFilter("all_pois");
       var filter = null;
     } else {
-      var filter = ["==", "type", dropdown.value];
+      var filter = ["==", "category", dropdown.value];
     }
     map.setFilter("all_pois", filter);
 
