@@ -55,6 +55,10 @@ const wire_dropdown_behavior = (map) => {
     var infoBox = document.getElementById("info-box");
     infoBox.style.setProperty("visibility", "hidden");
 
+    // Hide the secondary legend
+    var legend = document.getElementById("walkshed-legend");
+    legend.style.setProperty("display", "none");
+
     clearPopups();
 
     // Fly back to county zoom level

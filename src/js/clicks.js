@@ -23,8 +23,6 @@ const poi_click = (map, graph) => {
 
     console.log(iso_filter);
 
-    var iso_id_filter_as_string = ["in", "eta_uid", props.poi_uid.toString()];
-
     // Get links within walkshed from API
     reloadGeojson(map, props.poi_uid);
 
@@ -66,6 +64,10 @@ const poi_click = (map, graph) => {
     // Show the info box for this POI
     var infoBox = document.getElementById("info-box");
     infoBox.style.setProperty("visibility", "visible");
+
+    // Show the secondary legend
+    var legend = document.getElementById("walkshed-legend");
+    legend.style.setProperty("display", "inline");
   });
 };
 
