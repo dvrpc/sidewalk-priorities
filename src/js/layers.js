@@ -140,6 +140,7 @@ const map_layers_group_2 = {
         ],
       },
     },
+    filter: ["==", "category", "Public School"],
   },
   selected_poi: {
     id: "selected_poi",
