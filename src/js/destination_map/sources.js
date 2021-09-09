@@ -13,7 +13,7 @@ const data_sources = {
   "mcpcv1-tiles": {
     type: "vector",
     // url: "http://localhost:8081/data/mcpc_v1.json",
-    url: "https://tiles.dvrpc.org/data/sidewalk-prioritiesv2.json",
+    url: "https://tiles.dvrpc.org/data/sidewalk-prioritiesv3.json",
   },
 };
 export { data_sources };
