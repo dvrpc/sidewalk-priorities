@@ -34,6 +34,7 @@ const poi_click = (map, graph) => {
     map.setFilter("iso_osm_outline", ["all", iso_filter, osm_filter]);
 
     map.setFilter("selected_poi", id_filter);
+    map.setFilter("selected_poi_entrypoints", id_filter);
 
     map.flyTo({
       center: e.lngLat,
@@ -59,7 +60,8 @@ const poi_click = (map, graph) => {
     map.setPaintProperty("iso_sw_outline", "line-opacity", 0.9);
     map.setPaintProperty("iso_osm_outline", "line-opacity", 0.9);
 
-    map.setPaintProperty("selected_poi", "circle-stroke-opacity", 0.5);
+    map.setPaintProperty("selected_poi", "circle-stroke-opacity", 1);
+    // map.setPaintProperty("selected_poi", "circle-opacity", 1);
 
     // Show the info box for this POI
     var infoBox = document.getElementById("info-box");

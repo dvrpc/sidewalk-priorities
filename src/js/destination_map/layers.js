@@ -111,16 +111,33 @@ const map_layers_group_2 = {
     },
     filter: ["all", ["==", "line_type", 2], ["==", "county", "MONTGOMERY"]],
   },
+
+  selected_poi_entrypoints: {
+    id: "selected_poi_entrypoints",
+    type: "circle",
+    source: "mcpcv1-tiles",
+    "source-layer": "pois_full",
+    layout: {},
+    paint: {
+      "circle-radius": 4,
+      "circle-opacity": 1,
+      "circle-stroke-opacity": 1,
+      "circle-stroke-width": 1,
+      "circle-color": "black",
+      "circle-stroke-color": "white",
+    },
+    filter: ["==", "type", "none - this filter should return zero results"],
+  },
   all_pois: {
     id: "all_pois",
     type: "circle",
     source: "mcpcv1-tiles",
-    "source-layer": "mcpc_combined_pois",
+    "source-layer": "pois_centroids",
     layout: {},
     paint: {
       "circle-radius": 6,
-      "circle-opacity": 0.6,
-      "circle-stroke-opacity": 0.6,
+      "circle-opacity": 1,
+      "circle-stroke-opacity": 1,
       "circle-stroke-color": "black",
       "circle-stroke-width": 1,
       "circle-color": {
@@ -146,7 +163,7 @@ const map_layers_group_2 = {
     id: "selected_poi",
     type: "circle",
     source: "mcpcv1-tiles",
-    "source-layer": "mcpc_combined_pois",
+    "source-layer": "pois_centroids",
     layout: {},
     paint: {
       "circle-radius": 20,
