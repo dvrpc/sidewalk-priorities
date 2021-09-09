@@ -11,7 +11,15 @@ module.exports = {
   mode: "development",
 
   entry: {
-    main: path.resolve(__dirname, "./src/index.js"),
+    main_landing_page: path.resolve(__dirname, "./src/index.js"),
+    main_destination_map: path.resolve(
+      __dirname,
+      "./src/index_for_destination_map.js"
+    ),
+    main_municipal_map: path.resolve(
+      __dirname,
+      "./src/index_for_municipal_map.js"
+    ),
   },
 
   output: {
@@ -24,6 +32,19 @@ module.exports = {
       title: "Sidewalk Priorities",
       template: path.resolve(__dirname, "./src/index.html"),
       filename: "index.html",
+      chunks: ["main_landing_page"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Sidewalk Priorities",
+      template: path.resolve(__dirname, "./src/destination.html"),
+      filename: "by-destination.html",
+      chunks: ["main_destination_map"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Sidewalk Priorities",
+      template: path.resolve(__dirname, "./src/municipality.html"),
+      filename: "by-municipality.html",
+      chunks: ["main_municipal_map"],
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
