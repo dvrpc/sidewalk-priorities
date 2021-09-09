@@ -10,7 +10,7 @@ const api_url_base = () => {
   var current_env = process.env.NODE_ENV;
 
   if (current_env == "development") {
-    var url = "https://omad-api-lf2k9.ondigitalocean.app";
+    var url = "http://localhost:8000";
   } else {
     var url = "https://omad-api-lf2k9.ondigitalocean.app";
   }
@@ -27,38 +27,63 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
    * opacity is set to zero so it does not appear visually.
    * Later on we will set the opacity to a non-zero value when needed.
    */
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=1007";
+  let url_for_all_munis = api_url_base() + "/sidewalk/all-munis";
+  let url_for_one_muni =
+    api_url_base() + "/sidewalk/one-muni/?q=Abington%20Township";
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
-  request.open("GET", url, true);
+  request.open("GET", url_for_all_munis, true);
   request.setRequestHeader("Access-Control-Allow-Origin", "*");
   request.onload = function () {
     if (this.status >= 200 && this.status < 400) {
       // retrieve the JSON from the response
       var json = JSON.parse(this.response);
 
-      map.addSource("missing-links", {
+      map.addSource("all-munis", {
         type: "geojson",
         data: json,
       });
+      // Add all munis
       map.addLayer(
         {
-          id: "missing-links-for-selected-poi",
+          id: "all-municipalities",
           type: "line",
-          source: "missing-links",
+          source: "all-munis",
           paint: {
+            "line-color": "black",
+            "line-opacity": 0.5,
+          },
+        },
+        firstSymbolId
+      );
+    }
+  };
+  request.send();
+
+  // make a GET request to parse the GeoJSON at the url
+  var request = new XMLHttpRequest();
+  request.open("GET", url_for_one_muni, true);
+  request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+      // retrieve the JSON from the response
+      var json = JSON.parse(this.response);
+
+      map.addSource("one-muni", {
+        type: "geojson",
+        data: json,
+      });
+      // Add a layer for the selected muni
+      map.addLayer(
+        {
+          id: "selected-municipality",
+          type: "line",
+          source: "one-muni",
+          paint: {
+            "line-color": "red",
             "line-opacity": 0,
-            "line-color": "blue",
-            "line-width": {
-              property: "island_count",
-              default: 100,
-              stops: [
-                [0, 1],
-                [1, 5],
-                [2, 10],
-              ],
-            },
+            "line-width": 10,
           },
         },
         firstSymbolId
@@ -68,15 +93,18 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
   request.send();
 };
 
-const reloadGeojson = (map, poi_uid) => {
+const reloadGeojson = (map, muni_name) => {
   /**
    * Update the geojson layer from the API response
    * Set the line-opacity to 0.5 after successfully loading the JSON data
    *
    * @param {mapboxgl.Map} map - The map object for the page
-   * @param {number} poi_uid - This is the ID value for the specific POI
+   * @param {string} muni_name - The name of the municipality to show
    */
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=" + poi_uid;
+  let url =
+    api_url_base() + "/sidewalk/one-muni/?q=" + muni_name.replace(" ", "%20");
+
+  console.log(url);
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
@@ -87,13 +115,9 @@ const reloadGeojson = (map, poi_uid) => {
       // retrieve the JSON from the response
       var json = JSON.parse(this.response);
 
-      map.getSource("missing-links").setData(json);
+      map.getSource("one-muni").setData(json);
 
-      map.setPaintProperty(
-        "missing-links-for-selected-poi",
-        "line-opacity",
-        0.5
-      );
+      map.setPaintProperty("selected-municipality", "line-opacity", 0.5);
     }
   };
   request.send();

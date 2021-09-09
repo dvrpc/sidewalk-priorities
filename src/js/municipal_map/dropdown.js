@@ -1,4 +1,5 @@
-import { clearPopups } from "./popup.js";
+// import { clearPopups } from "./popup.js";
+import { reloadGeojson } from "./api.js";
 
 const wire_dropdown_behavior = (map) => {
   /**
@@ -13,60 +14,12 @@ const wire_dropdown_behavior = (map) => {
    *    - Map is zoomed back out to the county extent
    */
 
-  var dropdown = document.getElementById("dropdown_category");
-  var subtitle = document.getElementById("subtitle");
-
-  var subtitle_text = {
-    all: "All Points of Interest",
-    "Public School": "Public Schools",
-    "Private School": "Private Schools",
-    "School - College, University": "Colleges/Universities",
-    "Health Facility": "Health Care Facilities",
-    "Food Store": "Food Stores",
-    "Activity Center for Seniors or Disabled":
-      "Activity Centers for Senior/Disabled",
-    "Municipal Buildings": "Municipal Buildings",
-    trailhead: "Trailheads",
-    Libraries: "Libraries",
-    "Shopping Centers": "Shopping Centers",
-  };
+  var dropdown = document.getElementById("dropdown_muni");
 
   dropdown.addEventListener("change", function () {
-    // Set the subtitle text
-    subtitle.innerHTML = subtitle_text[dropdown.value];
+    var muni_name = dropdown.value;
 
-    if (dropdown.value == "all") {
-      // map.setFilter("all_pois");
-      var filter = null;
-    } else {
-      var filter = ["==", "category", dropdown.value];
-    }
-    map.setFilter("all_pois", filter);
-
-    // Filter out the selected layers so no features appear
-    map.setFilter("iso_sw", ["==", "src_network", "none"]);
-    map.setFilter("iso_osm", ["==", "src_network", "none"]);
-    map.setFilter("iso_sw_outline", ["==", "src_network", "none"]);
-    map.setFilter("iso_osm_outline", ["==", "src_network", "none"]);
-    map.setFilter("selected_poi", ["==", "type", "none"]);
-    map.setPaintProperty("missing-links-for-selected-poi", "line-opacity", 0);
-
-    // Hide the info box
-    var infoBox = document.getElementById("info-box");
-    infoBox.style.setProperty("visibility", "hidden");
-
-    // Hide the secondary legend
-    var legend = document.getElementById("walkshed-legend");
-    legend.style.setProperty("display", "none");
-
-    clearPopups();
-
-    // Fly back to county zoom level
-    map.flyTo({
-      center: [-75.36277290123333, 40.201296611075346],
-      zoom: 10,
-      essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-    });
+    reloadGeojson(map, muni_name);
   });
 };
 
