@@ -17,6 +17,28 @@ body {
   font: "Roboto" !important;
 }
 
+button {
+  height: 40px;
+  width: 200px;
+  position: relative;
+  margin: 10px auto 15px auto;
+  /* padding: 10; */
+  border-radius: 5px;
+  border: 2px solid var(--green);
+  color: var(--green);
+  background-color: var(--popup-color);
+  /* background-color: rgb(199, 199, 199); */
+}
+button:hover {
+  background-color: var(--green);
+  color: white;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
 #map {
   position: absolute;
   top: 0;
