@@ -7,25 +7,33 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-let indexConfig = new HtmlWebpackPlugin({
-  title: "Sidewalk Priorities",
-  template: path.resolve(__dirname, "./src/index.html"),
-  filename: "index.html",
-  minify: {
-    collapseWhitespace: true,
-    removeComments: true,
-    removeRedundantAttributes: true,
-    removeScriptTypeAttributes: false,
-    removeStyleLinkTypeAttributes: false,
-    useShortDoctype: true,
-  },
-});
+// let indexConfig = new HtmlWebpackPlugin({
+//   title: "Sidewalk Priorities",
+//   template: path.resolve(__dirname, "./src/index.html"),
+//   filename: "index.html",
+//   minify: {
+//     collapseWhitespace: true,
+//     removeComments: true,
+//     removeRedundantAttributes: true,
+//     removeScriptTypeAttributes: false,
+//     removeStyleLinkTypeAttributes: false,
+//     useShortDoctype: true,
+//   },
+// });
 
 module.exports = {
   mode: "production",
 
   entry: {
-    main: path.resolve(__dirname, "./src/index.js"),
+    main_landing_page: path.resolve(__dirname, "./src/index.js"),
+    main_destination_map: path.resolve(
+      __dirname,
+      "./src/index_for_destination_map.js"
+    ),
+    main_municipal_map: path.resolve(
+      __dirname,
+      "./src/index_for_municipal_map.js"
+    ),
   },
 
   output: {
@@ -45,7 +53,48 @@ module.exports = {
         },
       ],
     }),
-    indexConfig,
+    new HtmlWebpackPlugin({
+      title: "Sidewalk Priorities",
+      template: path.resolve(__dirname, "./src/index.html"),
+      filename: "index.html",
+      chunks: ["main_landing_page"],
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      title: "Sidewalk Priorities",
+      template: path.resolve(__dirname, "./src/destination.html"),
+      filename: "by-destination.html",
+      chunks: ["main_destination_map"],
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      title: "Sidewalk Priorities",
+      template: path.resolve(__dirname, "./src/municipality.html"),
+      filename: "by-municipality.html",
+      chunks: ["main_municipal_map"],
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: true,
+      },
+    }),
   ],
 
   resolve: {
