@@ -140,7 +140,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           type: "line",
           source: "gaps",
           paint: {
-            "line-color": "blue",
+            "line-color": "rgb(57,83,164)",
             "line-opacity": 0,
             "line-width": {
               property: "island_count",

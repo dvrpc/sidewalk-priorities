@@ -50,7 +50,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           source: "missing-links",
           paint: {
             "line-opacity": 0,
-            "line-color": "blue",
+            "line-color": "rgb(57,83,164)",
             "line-width": {
               property: "island_count",
               default: 100,
