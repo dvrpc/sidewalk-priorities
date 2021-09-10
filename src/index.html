@@ -7,43 +7,90 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
-
-    <!-- <script src="https://unpkg.com/@turf/turf@6.3.0/turf.min.js"></script> -->
-
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap"
       rel="stylesheet"
     />
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"
-      integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
   </head>
 
   <body>
-    <h1>Welcome to the Sidewalk Priorities map</h1>
+    <div id="headerblock">
+      <div class="box-overlay">
+        <h1>Sidewalk Priorities: Montgomery County, PA</h1>
+        <hr />
+        <p>
+          This map was designed to allow transportation planners to take a deep
+          dive into the pedestrian accessibility of essential services in
+          Montgomery County, Pennsylvania.
 
-    <div class="btn-group">
-      <button class="button" onclick="location.href='/by-destination.html'">
-        Explore by Destination
-      </button>
-      <button class="button" onclick="location.href='/by-municipality.html'">
-        Explore by Municipality
-      </button>
+          <br />
+
+          These services were identified by combining two datasets:
+        </p>
+        <ul>
+          <li>
+            Points of interest from DVRPC's
+            <a href="https://www.dvrpc.org/eta" target="_blank"
+              >"Equity Through Access"</a
+            >
+            study
+          </li>
+
+          <li>
+            Schools, libraries, municipal buildings, and historic sites from
+            Montgomery County's
+            <a href="https://data-montcopa.opendata.arcgis.com/" target="_blank"
+              >open data portal</a
+            >
+          </li>
+        </ul>
+
+        <p>This map is divided up into two parts:</p>
+        <ul>
+          <li>
+            <span class="green-text"> Explore by Destination </span> to find
+            sidewalk gaps that would benefit specific places
+          </li>
+          <li>
+            <span class="green-text">Explore by Muncipality </span> to see all
+            of the gaps that exist within a township or borough
+          </li>
+        </ul>
+
+        <div class="btn-group">
+          <button class="button" onclick="location.href='/by-destination.html'">
+            Explore by Destination
+          </button>
+          <button
+            class="button"
+            onclick="location.href='/by-municipality.html'"
+          >
+            Explore by Municipality
+          </button>
+        </div>
+
+        <hr />
+
+        <p>
+          If you have any questions, please contact
+
+          <a href="mailto:afraint@dvrpc.org">Aaron Fraint, AICP</a>
+          <span style="font-style: italic; font-size: 80%">
+            Associate Manager, DVRPC Office of Mobility Analysis & Design
+          </span>
+        </p>
+      </div>
     </div>
 
-    <p style="clear: both">
-      <!-- <br />Remember to clear floats after, or else will this p element also
-      float next to the buttons. -->
-    </p>
+    <div id="logo-box">
+      <div class="box-overlay" style="padding: 10px 0">
+        <img id="dvrpc-logo" src="./img/logo.png" alt="" />
+        <br />
+        <br />
+
+        <img id="mcpc-logo" src="./img/mcpc_logo.png" alt="" />
+      </div>
+    </div>
   </body>
 </html>

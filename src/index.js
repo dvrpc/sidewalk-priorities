@@ -1,2 +1,1 @@
-import "./css/small_buttons.css";
-import "./css/style.css";
+import "./css/landing.css";
