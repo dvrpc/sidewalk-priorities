@@ -5,8 +5,8 @@
 
 html,
 body {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
   margin: 0;
   background: linear-gradient(
     33deg,
@@ -20,11 +20,10 @@ body {
   font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 
-#headerblock {
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  width: 55vw;
+.headerblock {
+  position: inline;
+  margin: 0 auto;
+  width: 60vw;
   min-width: 300px;
   z-index: 1;
 }
@@ -62,10 +61,10 @@ button:hover {
 }
 
 #mcpc-logo {
-  width: 300px;
+  width: 200px;
 }
 #dvrpc-logo {
-  width: 300px;
+  width: 200px;
 }
 
 #logo-box {
@@ -73,7 +72,7 @@ button:hover {
   bottom: 2%;
   right: 2%;
   width: 10vw;
-  min-width: 330px;
+  min-width: 200;
   z-index: 1;
   text-align: center;
 }
@@ -89,5 +88,23 @@ hr {
 .green-text {
   color: var(--green);
   font-weight: bold;
-  font-style: italic;
+}
+table {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  #mcpc-logo {
+    width: 100px;
+  }
+  #dvrpc-logo {
+    width: 100px;
+  }
+  .headerblock {
+    width: 85vw;
+  }
+  button {
+    width: 100px;
+  }
 }

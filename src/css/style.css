@@ -139,7 +139,21 @@ hr {
   min-width: 100%;
   margin-bottom: 15px;
 }
-
+#logo-box {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  width: 10vw;
+  min-width: 200;
+  z-index: 1;
+  text-align: center;
+}
+#mcpc-logo {
+  width: 200px;
+}
+#dvrpc-logo {
+  width: 200px;
+}
 @media only screen and (max-width: 600px) {
   #graph {
     display: none;
