@@ -70,29 +70,13 @@ const map_layers_group_2 = {
     "source-layer": "pois_centroids",
     layout: {},
     paint: {
-      "circle-radius": 6,
+      "circle-radius": 3,
       "circle-opacity": 0.6,
       "circle-stroke-opacity": 0.6,
-      "circle-stroke-color": "black",
+      "circle-stroke-color": "white",
       "circle-stroke-width": 1,
-      "circle-color": {
-        property: "ab_ratio",
-        default: "black",
-        stops: [
-          [0, "rgba(0, 0, 0, 1)"],
-          [0.0001, "rgba(255, 0, 0, 1)"],
-          [0.1, "rgba(255, 153, 0, 1)"],
-          [0.5, "rgba(255, 255, 0, 1)"],
-          // [0.75, "rgba(0, 153, 0, 1)"],
-          [1, "rgba(0, 153, 0, 1)"],
-          // [0.0001, "rgba(255, 0, 0, 1)"],
-          // [0.7, "rgba(255, 255, 0, 1)"],
-          // [1, "rgba(0, 153, 0, 1)"],
-          // [2, "rgba(0, 153, 0, 1)"], # old stop values, if needed
-        ],
-      },
+      "circle-color": "black",
     },
-    filter: ["==", "category", "This should not return any features"],
   },
 };
 

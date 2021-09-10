@@ -33,7 +33,7 @@
     <div id="map">
       <div id="headerblock">
         <div class="box-overlay">
-          <h1>Priorities by Municipality</h1>
+          <h1>Priorities by Municipality:</h1>
           <h2 id="subtitle" class="green-text">
             Use the dropdown below to select a municipality of interest
           </h2>
@@ -42,6 +42,7 @@
           <h3>Zoom to a Municipality:</h3>
           <p>
             <select id="dropdown_muni">
+              <option value="...">...</option>
               <option value="Abington Township">Abington Township</option>
               <option value="Ambler Borough">Ambler Borough</option>
               <option value="Bridgeport Borough">Bridgeport Borough</option>
@@ -165,24 +166,19 @@
           </div>
         </div>
 
-        <div id="info-box" class="box-overlay">
-          <table>
-            <tr>
-              <td style="text-align: left; width: 66%">
-                <h2 id="selected-poi-name" class="green-text">
-                  Placeholder name
-                </h2>
-              </td>
-              <td style="text-align: right; width: 34%">
-                <div id="selected-poi-ratio">Placeholder percentage</div>
-              </td>
-            </tr>
-          </table>
-
-          <h4>Walkshed Size (in square miles)</h4>
-          <div id="graph">
-            <canvas id="barChart"></canvas>
-          </div>
+        <div id="stat-box" class="box-overlay">
+          <h2>Filling this gap could:</h2>
+          <ul>
+            <li id="stat-destinations">
+              improve pedestrian connectivity to
+              <span class="green-text">X</span>
+              destinations
+            </li>
+            <li id="stat-island">
+              connect
+              <span class="green-text">X</span> existing sidewalk islands
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -1,7 +1,6 @@
-import "./css/small_buttons.css";
 import "./css/style.css";
 import { data_sources } from "./js/municipal_map/sources.js";
-import { poi_click } from "./js/municipal_map/clicks.js";
+import { gap_click } from "./js/municipal_map/clicks.js";
 import { wire_mouse_hover } from "./js/municipal_map/hover.js";
 import { makeMap } from "./js/municipal_map/map.js";
 import {
@@ -11,13 +10,8 @@ import {
 import { paint_props } from "./js/municipal_map/paint_props";
 import { initialGeojsonLoad } from "./js/municipal_map/api.js";
 import { wire_dropdown_behavior } from "./js/municipal_map/dropdown";
-import {
-  update_graph_with_api_data,
-  makeGraph,
-} from "./js/municipal_map/graph.js";
 
 const map = makeMap();
-const bar_chart = makeGraph();
 
 map.on("load", function () {
   /**
@@ -32,8 +26,6 @@ map.on("load", function () {
    *  - Wire up click and hover events
    *  - Wire up dropdown selector
    */
-
-  update_graph_with_api_data(bar_chart, "1007");
 
   // Add map data sources and layer styling
   for (const src in data_sources) map.addSource(src, data_sources[src]);
@@ -56,7 +48,7 @@ map.on("load", function () {
     );
 
   // Wire up click and hover interactions
-  poi_click(map, bar_chart);
+  gap_click(map);
   wire_mouse_hover(map);
 
   // Wire up the dropdown behavior
