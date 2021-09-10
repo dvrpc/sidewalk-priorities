@@ -1,0 +1,93 @@
+:root {
+  --popup-color: rgba(255, 255, 255, 0.85);
+  --green: #04aa6d;
+}
+
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  background: linear-gradient(
+    33deg,
+    rgba(4, 170, 109, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+body {
+  margin: 0;
+  padding: 0;
+  font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+#headerblock {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 55vw;
+  min-width: 300px;
+  z-index: 1;
+}
+
+.box-overlay {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid white;
+  box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.3);
+  margin-top: 2vh;
+  border-radius: 5px;
+}
+
+button {
+  height: 40px;
+  width: 200px;
+  position: relative;
+  margin: 15px auto 15px auto;
+  /* padding: 10; */
+  border-radius: 5px;
+  border: 2px solid var(--green);
+  color: var(--green);
+  background-color: var(--popup-color);
+  /* background-color: rgb(199, 199, 199); */
+}
+button:hover {
+  background-color: var(--green);
+  color: white;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
+#mcpc-logo {
+  width: 300px;
+}
+#dvrpc-logo {
+  width: 300px;
+}
+
+#logo-box {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  width: 10vw;
+  min-width: 330px;
+  z-index: 1;
+  text-align: center;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #000000; /* old IE */
+  background-color: #000000; /* Modern Browsers */
+}
+
+.green-text {
+  color: var(--green);
+  font-weight: bold;
+  font-style: italic;
+}

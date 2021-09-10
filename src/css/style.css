@@ -14,14 +14,15 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12px;
-  font: "Roboto" !important;
+  font-family: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 
 button {
   height: 40px;
-  width: 200px;
+  width: 15vw;
+  max-width: 180px;
   position: relative;
-  margin: 10px auto 15px auto;
+  margin: 15px auto 15px auto;
   /* padding: 10; */
   border-radius: 5px;
   border: 2px solid var(--green);
@@ -119,12 +120,17 @@ hr {
   visibility: hidden;
   text-align: center;
 }
-
+#stat-box {
+  visibility: hidden;
+}
 #selected-poi-ratio {
   font-style: italic;
 }
 .green-text {
   color: var(--green);
+}
+.italic {
+  font-style: italic;
 }
 
 #graph-box {
