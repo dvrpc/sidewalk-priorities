@@ -10,7 +10,8 @@ const api_url_base = () => {
   var current_env = process.env.NODE_ENV;
 
   if (current_env == "development") {
-    var url = "https://omad-api-lf2k9.ondigitalocean.app";
+    // var url = "https://omad-api-lf2k9.ondigitalocean.app";
+    var url = "http://localhost:8000";
   } else {
     var url = "https://omad-api-lf2k9.ondigitalocean.app";
   }
