@@ -1,4 +1,6 @@
 import "./css/style.css";
+import { get_query_params } from "./js/query.js";
+
 import { data_sources } from "./js/municipal_map/sources.js";
 import { gap_click, poi_click } from "./js/municipal_map/clicks.js";
 import { wire_mouse_hover } from "./js/municipal_map/hover.js";
@@ -8,7 +10,10 @@ import {
   map_layers_group_2,
 } from "./js/municipal_map/layers.js";
 import { paint_props } from "./js/municipal_map/paint_props";
-import { initialGeojsonLoad } from "./js/municipal_map/api.js";
+import {
+  initialGeojsonLoad,
+  reload_data_from_query_params,
+} from "./js/municipal_map/api.js";
 import { wire_dropdown_behavior } from "./js/municipal_map/dropdown";
 
 const map = makeMap();
@@ -54,4 +59,16 @@ map.on("load", function () {
 
   // Wire up the dropdown behavior
   wire_dropdown_behavior(map);
+
+  let params = get_query_params();
+  if (params) {
+    console.log(params);
+    reload_data_from_query_params(
+      map,
+      params.lat,
+      params.lng,
+      parseInt(params.id),
+      params.island_count
+    );
+  }
 });
