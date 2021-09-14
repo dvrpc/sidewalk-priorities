@@ -106,6 +106,7 @@ const map_layers_group_2 = {
       // make layer visible by default
       visibility: "visible",
     },
+    filter: ["==", "uid", "-1"],
   },
   all_pois: {
     id: "all_pois",
