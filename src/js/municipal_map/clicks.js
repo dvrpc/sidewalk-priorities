@@ -1,5 +1,19 @@
 import { api_url_base } from "./api.js";
 
+const hyperlink_base = () => {
+  /**
+   * Read the URL base for hyperlinking within the app
+   */
+  var current_url = window.location.href;
+
+  // Remove everything after the final slash
+  var url_as_list = current_url.split("/");
+  url_as_list.pop();
+  var base_url = url_as_list.join("/");
+
+  return base_url;
+};
+
 const gap_click = (map) => {
   /**
    * Handle click events for the 'gap-layer'
@@ -68,14 +82,12 @@ const gap_click = (map) => {
 const poi_click = (map) => {
   map.on("click", "all_pois", function (e) {
     var props = e.features[0].properties;
-    console.log(props);
-    console.log(e);
-
     var lat = e.lngLat.lat;
     var lng = e.lngLat.lng;
 
     let url =
-      "by-destination.html?lat=" +
+      hyperlink_base() +
+      "/by-destination.html?lat=" +
       lat +
       "&lng=" +
       lng +
