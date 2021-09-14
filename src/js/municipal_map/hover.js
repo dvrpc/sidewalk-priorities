@@ -30,18 +30,18 @@ const wire_mouse_hover = (map) => {
    *
    * @param {mapboxgl.Map} map - The map object for the page
    */
-  var layers = ["gap-layer", "all_pois"];
+  var layers = ["gaps", "all_pois"];
 
   layers.forEach((lyr) => wire_single_layer(map, lyr));
 
   // Add popup with name of POI when hovering
-  map.on("mouseenter", "gap-layer", function (e) {
+  map.on("mouseenter", "gaps", function (e) {
     var msg = "<h3>Click this gap to learn more</h3>";
     bindPopup(map, msg, e);
   });
 
   // change mouse tip upon leaving feature
-  map.on("mouseleave", "gap-layer", function (e) {
+  map.on("mouseleave", "gaps", function (e) {
     clearPopups();
   });
 
@@ -50,11 +50,14 @@ const wire_mouse_hover = (map) => {
     var props = e.features[0].properties;
 
     var msg =
-      "<h3 class='green-text'>" + title_cased_text(props.poi_name) + "</h3>";
+      "<div style='text-align: center;'><h3 class='green-text'>" +
+      title_cased_text(props.poi_name) +
+      "</h3>";
     msg +=
-      "<p style='text-align: center;'>" +
+      "<p>" +
       convert_ratio_to_text(props.ab_ratio) +
-      " sidewalk coverage</p>";
+      " sidewalk coverage</p>" +
+      "<p class='italic' style='font-size:80%'>Click this point to jump to the destination map</p></div>";
     bindPopup(map, msg, e);
   });
 
