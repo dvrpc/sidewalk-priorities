@@ -75,7 +75,7 @@ const poi_click = (map) => {
     var lng = e.lngLat.lng;
 
     let url =
-      "/by-destination.html?lat=" +
+      "by-destination.html?lat=" +
       lat +
       "&lng=" +
       lng +
