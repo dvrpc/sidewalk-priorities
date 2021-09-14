@@ -1,3 +1,5 @@
+import { handle_selected_gap } from "./clicks.js";
+
 const api_url_base = () => {
   /**
    * Read the current 'mode' variable from webpack
@@ -99,68 +101,6 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
-  request.open("GET", url_for_one_muni_gaps, true);
-  request.setRequestHeader("Access-Control-Allow-Origin", "*");
-  request.onload = function () {
-    if (this.status >= 200 && this.status < 400) {
-      // retrieve the JSON from the response
-      var json = JSON.parse(this.response);
-
-      map.addSource("gaps", {
-        type: "geojson",
-        data: json,
-      });
-
-      map.addLayer(
-        {
-          id: "clicked-gap",
-          type: "line",
-          source: "gaps",
-          paint: {
-            "line-color": "yellow",
-            "line-opacity": 1,
-            "line-width": {
-              property: "island_count",
-              default: 100,
-              stops: [
-                [0, 3],
-                [1, 10],
-                [2, 20],
-              ],
-            },
-          },
-          filter: ["in", "uid", "-1"],
-        },
-        firstSymbolId
-      );
-
-      map.addLayer(
-        {
-          id: "gap-layer",
-          type: "line",
-          source: "gaps",
-          paint: {
-            "line-color": "rgb(57,83,164)",
-            "line-opacity": 0,
-            "line-width": {
-              property: "island_count",
-              default: 100,
-              stops: [
-                [0, 1],
-                [1, 5],
-                [2, 10],
-              ],
-            },
-          },
-        },
-        firstSymbolId
-      );
-    }
-  };
-  request.send();
-
-  // make a GET request to parse the GeoJSON at the url
-  var request = new XMLHttpRequest();
   request.open("GET", url_for_pois_near_one_gap, true);
   request.setRequestHeader("Access-Control-Allow-Origin", "*");
   request.onload = function () {
@@ -179,9 +119,9 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
           type: "circle",
           source: "selected_poi_data",
           paint: {
-            "circle-radius": 6,
+            "circle-radius": 10,
             "circle-opacity": 0,
-            "circle-stroke-opacity": 1,
+            "circle-stroke-opacity": 0,
             "circle-stroke-color": "black",
             "circle-stroke-width": 1,
             "circle-color": {
@@ -252,12 +192,48 @@ const reloadGeojson = (map, muni_name) => {
       // retrieve the JSON from the response
       var json = JSON.parse(this.response);
 
-      map.getSource("gaps").setData(json);
+      console.log(json);
+      var id_filter = ["in", "uid"].concat(json);
 
-      map.setPaintProperty("gap-layer", "line-opacity", 0.5);
+      map.setFilter("gaps", id_filter);
+      // map.getSource("gaps").setData(json);
+
+      map.setPaintProperty("gaps", "line-opacity", 0.5);
     }
   };
   request.send();
 };
 
-export { reloadGeojson, initialGeojsonLoad, api_url_base };
+const reload_data_from_query_params = (map, lat, lng, uid, island_count) => {
+  console.log(lat);
+  console.log(lng);
+
+  let url =
+    api_url_base() + "/sidewalk/gaps-near-xy/?lng=" + lng + "&lat=" + lat;
+
+  // make a GET request to parse the GeoJSON at the url
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+      // retrieve the JSON from the response
+      var json = JSON.parse(this.response);
+      var id_filter = ["in", "uid"].concat(json);
+
+      map.setFilter("gaps", id_filter);
+
+      map.setPaintProperty("gaps", "line-opacity", 0.5);
+
+      handle_selected_gap(map, uid, [lng, lat], island_count);
+    }
+  };
+  request.send();
+};
+
+export {
+  reloadGeojson,
+  initialGeojsonLoad,
+  api_url_base,
+  reload_data_from_query_params,
+};
