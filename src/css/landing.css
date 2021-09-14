@@ -3,31 +3,42 @@
   --green: #04aa6d;
 }
 
-html,
-body {
-  width: 100%;
+html {
   height: 100%;
+}
+
+body {
   margin: 0;
+  padding: 0;
+  font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   background: linear-gradient(
     33deg,
     rgba(4, 170, 109, 1) 0%,
     rgba(255, 255, 255, 1) 100%
   );
 }
-body {
-  margin: 0;
-  padding: 0;
-  font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
-}
 
-.headerblock {
-  position: inline;
+.header-block {
+  position: absolute;
+  top: 2%;
+  left: 2%;
   margin: 0 auto;
-  width: 60vw;
-  min-width: 300px;
+  width: 44vw;
   z-index: 1;
 }
 
+.video-block {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  margin: 0 auto;
+  width: 50vw;
+  z-index: 1;
+  padding-bottom: 2%;
+}
 .box-overlay {
   padding-left: 15px;
   padding-right: 15px;
@@ -60,11 +71,9 @@ button:hover {
   justify-content: center;
 }
 
-#mcpc-logo {
-  width: 200px;
-}
+#mcpc-logo,
 #dvrpc-logo {
-  width: 200px;
+  width: 15vw;
 }
 
 #logo-box {
@@ -93,18 +102,34 @@ table {
   width: 100%;
   text-align: center;
 }
-
+@media only screen and (max-width: 1200px) {
+  h1 {
+    font-size: 1rem;
+  }
+}
 @media only screen and (max-width: 900px) {
   #mcpc-logo {
-    width: 100px;
+    width: 18vw;
   }
   #dvrpc-logo {
-    width: 100px;
+    width: 18vw;
   }
   .headerblock {
     width: 85vw;
   }
   button {
     width: 100px;
+  }
+  .video-block {
+    position: relative;
+    left: 0.5%;
+    right: auto;
+    padding-top: 2%;
+    width: 91vw;
+  }
+  .header-block {
+    position: relative;
+    width: 91vw;
+    left: 0.5%;
   }
 }

@@ -69,7 +69,7 @@ table {
   top: 2%;
   right: 2%;
   width: 19vw;
-  min-width: 300px;
+  min-width: 250px;
   z-index: 1;
 }
 
@@ -142,19 +142,17 @@ hr {
 #logo-box {
   position: absolute;
   bottom: 3%;
-  right: 3%;
+  right: 2%;
   width: 10vw;
-  min-width: 200;
+  min-width: 300px;
   z-index: 1;
-  text-align: center;
+  text-align: right;
 }
-#mcpc-logo {
-  width: 200px;
-}
+#mcpc-logo,
 #dvrpc-logo {
   width: 200px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
   #graph {
     display: none;
   }
@@ -163,5 +161,9 @@ hr {
   }
   #headerblock {
     width: 28vw;
+  }
+  #mcpc-logo,
+  #dvrpc-logo {
+    width: 15vw;
   }
 }
