@@ -50,6 +50,10 @@ const wire_dropdown_behavior = (map) => {
       }
     };
     request.send();
+
+    map.setPaintProperty("clicked_gap", "line-opacity", 0);
+    map.setPaintProperty("selected_pois", "circle-opacity", 0);
+    map.setPaintProperty("selected_pois", "circle-stroke-opacity", 0);
   });
 };
 
