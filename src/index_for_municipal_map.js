@@ -1,6 +1,6 @@
 import "./css/style.css";
 import { data_sources } from "./js/municipal_map/sources.js";
-import { gap_click } from "./js/municipal_map/clicks.js";
+import { gap_click, poi_click } from "./js/municipal_map/clicks.js";
 import { wire_mouse_hover } from "./js/municipal_map/hover.js";
 import { makeMap } from "./js/municipal_map/map.js";
 import {
@@ -49,6 +49,7 @@ map.on("load", function () {
 
   // Wire up click and hover interactions
   gap_click(map);
+  poi_click(map);
   wire_mouse_hover(map);
 
   // Wire up the dropdown behavior
