@@ -1,6 +1,7 @@
 import "./css/style.css";
+import { get_query_params } from "./js/query.js";
 import { data_sources } from "./js/destination_map/sources.js";
-import { poi_click } from "./js/destination_map/clicks.js";
+import { poi_click, click_logic } from "./js/destination_map/clicks.js";
 import { wire_mouse_hover } from "./js/destination_map/hover.js";
 import { makeMap } from "./js/destination_map/map.js";
 import {
@@ -60,4 +61,17 @@ map.on("load", function () {
 
   // Wire up the dropdown behavior
   wire_dropdown_behavior(map);
+
+  let params = get_query_params();
+  if (params) {
+    console.log(params);
+    click_logic(
+      map,
+      bar_chart,
+      params.id,
+      [params.lng, params.lat],
+      params.name.replace("_", " "),
+      params.ab_ratio
+    );
+  }
 });
