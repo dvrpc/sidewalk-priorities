@@ -68,6 +68,10 @@ const handle_selected_gap = (map, uid, map_center, island_count) => {
   // Show the info box for this POI
   var infoBox = document.getElementById("stat-box");
   infoBox.style.setProperty("visibility", "visible");
+
+  // Show the secondary legend
+  var legend = document.getElementById("poi-legend");
+  legend.style.setProperty("display", "inline");
 };
 
 const gap_click = (map) => {
