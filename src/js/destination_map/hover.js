@@ -30,7 +30,7 @@ const wire_mouse_hover = (map) => {
    *
    * @param {mapboxgl.Map} map - The map object for the page
    */
-  var layers = ["all_pois"];
+  var layers = ["all_pois", "missing-links-for-selected-poi"];
 
   layers.forEach((lyr) => wire_single_layer(map, lyr));
 
@@ -47,6 +47,18 @@ const wire_mouse_hover = (map) => {
 
   // change mouse tip upon leaving feature
   map.on("mouseleave", "all_pois", function (e) {
+    clearPopups();
+  });
+
+  // Add popup letting user know that clicking gap will jump to the other map
+  map.on("mouseenter", "missing-links-for-selected-poi", function (e) {
+    var msg =
+      "<p class='italic' style='font-size: 80%'>Click this gap to jump to the municipal map</p>";
+    bindPopup(map, msg, e);
+  });
+
+  // change mouse tip upon leaving feature
+  map.on("mouseleave", "missing-links-for-selected-poi", function (e) {
     clearPopups();
   });
 };

@@ -3,6 +3,20 @@ import { reloadGeojson } from "./api.js";
 import { title_cased_text, convert_ratio_to_text } from "./text.js";
 import { update_graph_with_api_data } from "./graph.js";
 
+const hyperlink_base = () => {
+  /**
+   * Read the URL base for hyperlinking within the app
+   */
+  var current_url = window.location.href;
+
+  // Remove everything after the final slash
+  var url_as_list = current_url.split("/");
+  url_as_list.pop();
+  var base_url = url_as_list.join("/");
+
+  return base_url;
+};
+
 const click_logic = (map, graph, poi_uid, map_center, poi_name, ab_ratio) => {
   var poi_uid = parseInt(poi_uid);
   var id_filter = ["in", "poi_uid", poi_uid];
@@ -82,4 +96,29 @@ const poi_click = (map, graph) => {
   });
 };
 
-export { poi_click, click_logic };
+const gap_click = (map) => {
+  /**
+   */
+  map.on("click", "missing-links-for-selected-poi", function (e) {
+    var props = e.features[0].properties;
+    var lat = e.lngLat.lat;
+    var lng = e.lngLat.lng;
+    console.log(props);
+
+    let url =
+      hyperlink_base() +
+      "/by-municipality.html?lat=" +
+      lat +
+      "&lng=" +
+      lng +
+      "&id=" +
+      props.uid +
+      "&island_count=" +
+      props.island_count;
+
+    console.log(url);
+    window.location.href = url;
+  });
+};
+
+export { poi_click, click_logic, gap_click };
