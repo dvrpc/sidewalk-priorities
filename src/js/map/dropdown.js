@@ -1,6 +1,18 @@
 import { clearPopups } from "./popup.js";
+import {
+  fly_to_muni_centroid,
+  reload_selected_muni,
+  reload_gaps_within_muni,
+} from "./api.js";
+import {
+  hide_extra_ui_boxes,
+  hide_layers,
+  show_element,
+  hide_element,
+  set_text_to_div,
+} from "./switches.js";
 
-const wire_dropdown_behavior = (map) => {
+const wire_poi_dropdown_behavior = (map) => {
   /**
    * Set up the behavior for the dropdown selector
    *
@@ -14,7 +26,7 @@ const wire_dropdown_behavior = (map) => {
    */
 
   var dropdown = document.getElementById("dropdown_category");
-  var subtitle = document.getElementById("subtitle");
+  // var subtitle = document.getElementById("subtitle");
 
   var subtitle_text = {
     all: "All Points of Interest",
@@ -33,33 +45,29 @@ const wire_dropdown_behavior = (map) => {
 
   dropdown.addEventListener("change", function () {
     // Set the subtitle text
-    subtitle.innerHTML = subtitle_text[dropdown.value];
+    let text = subtitle_text[dropdown.value];
+    set_text_to_div("@ " + text, "subtitle");
 
     if (dropdown.value == "all") {
-      // map.setFilter("all_pois");
       var filter = null;
     } else {
       var filter = ["==", "category", dropdown.value];
     }
     map.setFilter("all_pois", filter);
 
-    // Filter out the selected layers so no features appear
-    map.setFilter("iso_sw", ["==", "src_network", "none"]);
-    map.setFilter("iso_osm", ["==", "src_network", "none"]);
-    map.setFilter("iso_sw_outline", ["==", "src_network", "none"]);
-    map.setFilter("iso_osm_outline", ["==", "src_network", "none"]);
-    map.setFilter("selected_poi", ["==", "type", "none"]);
-    map.setPaintProperty("missing-links-for-selected-poi", "line-opacity", 0);
+    hide_layers(map);
 
-    // Hide the info box
-    var infoBox = document.getElementById("info-box");
-    infoBox.style.setProperty("visibility", "hidden");
+    hide_extra_ui_boxes();
 
-    // Hide the secondary legend
-    var legend = document.getElementById("walkshed-legend");
-    legend.style.setProperty("display", "none");
+    hide_element("walkshed-legend");
+
+    // Hide the selected muni
+    map.setPaintProperty("selected-municipality", "line-opacity", 0);
 
     clearPopups();
+
+    var muni_dropdown = document.getElementById("dropdown_muni");
+    muni_dropdown.value = "...";
 
     // Fly back to county zoom level
     map.flyTo({
@@ -67,7 +75,32 @@ const wire_dropdown_behavior = (map) => {
       zoom: 10,
       essential: true, // this animation is considered essential with respect to prefers-reduced-motion
     });
+
+    hide_element("gap-legend");
   });
 };
 
-export { wire_dropdown_behavior };
+const wire_muni_dropdown_behavior = (map) => {
+  /**
+   * Set up the behavior for the dropdown selector
+   *
+   * Steps: TODO
+   */
+
+  var dropdown = document.getElementById("dropdown_muni");
+
+  dropdown.addEventListener("change", function () {
+    var muni_name = dropdown.value;
+    set_text_to_div("in " + muni_name, "subtitle");
+
+    reload_selected_muni(map, muni_name);
+    reload_gaps_within_muni(map, muni_name);
+
+    fly_to_muni_centroid(map, muni_name);
+
+    hide_layers(map);
+    show_element("gap-legend");
+  });
+};
+
+export { wire_poi_dropdown_behavior, wire_muni_dropdown_behavior };

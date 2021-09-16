@@ -117,11 +117,11 @@ hr {
     } */
 
 #info-box {
-  visibility: hidden;
+  display: none;
   text-align: center;
 }
 #stat-box {
-  visibility: hidden;
+  display: none;
 }
 #selected-poi-ratio {
   font-style: italic;
@@ -152,18 +152,36 @@ hr {
 #dvrpc-logo {
   width: 200px;
 }
-@media only screen and (max-width: 1200px) {
-  #graph {
-    display: none;
-  }
-  #screen-text {
-    display: inline;
-  }
+#gap-line-text {
+  display: none;
+  margin: 20px 0;
+}
+
+#mobile-text {
+  display: none;
+}
+
+@media only screen and (max-width: 760px) {
   #headerblock {
     width: 28vw;
+    top: 0%;
+    width: 95vw;
   }
   #mcpc-logo,
   #dvrpc-logo {
     width: 15vw;
+  }
+  #legendblock {
+    left: 2%;
+    bottom: 3%;
+    top: auto;
+    text-align: right;
+  }
+  #info-box,
+  #stat-box {
+    display: none !important;
+  }
+  #mobile-text {
+    display: block;
   }
 }

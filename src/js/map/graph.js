@@ -7,7 +7,7 @@ const makeGraph = () => {
     labels: [""],
     datasets: [
       {
-        label: "Using existing sidewalks only",
+        label: "Using existing sidewalks",
         backgroundColor: "rgba(" + color_codes.sidewalk + ", 0.5)",
         borderColor: "rgba(" + color_codes.sidewalk + ", 0.5)",
         data: [50],
