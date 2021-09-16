@@ -75,6 +75,8 @@ const wire_poi_dropdown_behavior = (map) => {
       zoom: 10,
       essential: true, // this animation is considered essential with respect to prefers-reduced-motion
     });
+
+    hide_element("gap-legend");
   });
 };
 
@@ -97,7 +99,7 @@ const wire_muni_dropdown_behavior = (map) => {
     fly_to_muni_centroid(map, muni_name);
 
     hide_layers(map);
-    show_element("walkshed-legend");
+    show_element("gap-legend");
   });
 };
 

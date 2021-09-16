@@ -49,6 +49,8 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
 
   show_element("stat-box");
   hide_element("info-box");
+  hide_element("walkshed-legend");
+  show_element("selected-legend");
 };
 
 const poi_click_logic = (
@@ -91,7 +93,9 @@ const poi_click_logic = (
 
   show_element("info-box");
   show_element("walkshed-legend");
+  show_element("gap-legend");
   hide_element("stat-box");
+  hide_element("selected-legend");
 };
 
 const poi_click = (map, graph) => {
