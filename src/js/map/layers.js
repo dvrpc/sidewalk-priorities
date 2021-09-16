@@ -111,7 +111,53 @@ const map_layers_group_2 = {
     },
     filter: ["all", ["==", "line_type", 2], ["==", "county", "MONTGOMERY"]],
   },
-
+  clicked_gap: {
+    id: "clicked_gap",
+    type: "line",
+    source: "mcpcv1-tiles",
+    "source-layer": "montco_missing_sidewalks",
+    paint: {
+      "line-color": "yellow",
+      "line-opacity": 0,
+      "line-width": {
+        property: "island_count",
+        default: 100,
+        stops: [
+          [0, 3],
+          [1, 10],
+          [2, 20],
+        ],
+      },
+    },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+  },
+  gaps: {
+    id: "gaps",
+    type: "line",
+    source: "mcpcv1-tiles",
+    "source-layer": "montco_missing_sidewalks",
+    paint: {
+      "line-color": "rgb(57,83,164)",
+      "line-opacity": 0,
+      "line-width": {
+        property: "island_count",
+        default: 100,
+        stops: [
+          [0, 1],
+          [1, 5],
+          [2, 10],
+        ],
+      },
+    },
+    layout: {
+      // make layer visible by default
+      visibility: "visible",
+    },
+    filter: ["==", "uid", "-1"],
+  },
   selected_poi_entrypoints: {
     id: "selected_poi_entrypoints",
     type: "circle",
@@ -142,22 +188,16 @@ const map_layers_group_2 = {
       "circle-stroke-width": 1,
       "circle-color": {
         property: "ab_ratio",
-        default: "black",
+        default: "white",
         stops: [
-          [0, "rgba(0, 0, 0, 1)"],
+          [0, "rgba(255, 255, 255, 0.8)"],
           [0.0001, "rgba(255, 0, 0, 1)"],
           [0.1, "rgba(255, 153, 0, 1)"],
           [0.5, "rgba(255, 255, 0, 1)"],
-          // [0.75, "rgba(0, 153, 0, 1)"],
           [1, "rgba(0, 153, 0, 1)"],
-          // [0.0001, "rgba(255, 0, 0, 1)"],
-          // [0.7, "rgba(255, 255, 0, 1)"],
-          // [1, "rgba(0, 153, 0, 1)"],
-          // [2, "rgba(0, 153, 0, 1)"], # old stop values, if needed
         ],
       },
     },
-    // filter: ["==", "category", "Public School"],
   },
   selected_poi: {
     id: "selected_poi",
@@ -171,18 +211,6 @@ const map_layers_group_2 = {
       "circle-stroke-opacity": 0,
       "circle-stroke-width": 8,
       "circle-stroke-color": "black",
-      // "circle-color": {
-      //   property: "ab_ratio",
-      //   default: "black",
-      //   stops: [
-      //     [0, "rgba(0, 0, 0, 1)"],
-      //     [0.0001, "rgba(255, 0, 0, 1)"],
-      //     [0.1, "rgba(255, 153, 0, 1)"],
-      //     [0.5, "rgba(255, 255, 0, 1)"],
-      //     // [0.75, "rgba(0, 153, 0, 1)"],
-      //     [1, "rgba(0, 153, 0, 1)"],
-      //   ],
-      // },
     },
     filter: ["==", "type", "none - this filter should return zero results"],
   },

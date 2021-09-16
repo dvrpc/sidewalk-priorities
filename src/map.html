@@ -33,14 +33,14 @@
     <div id="map">
       <div id="headerblock">
         <div class="box-overlay">
-          <h1>Priorities by Municipality:</h1>
-          <h2 id="subtitle" class="green-text">
-            Use the dropdown below to select a municipality of interest
-          </h2>
-          <hr />
+          <h1>Sidewalk Priorities</h1>
+          <h2 id="subtitle" class="green-text">All Points of Interest</h2>
 
-          <span class="green-text italic">Zoom to a municipality</span>
-          by selecting from the list below:
+          <hr />
+          <div>
+            <span class="green-text italic">Select a municipality</span>
+            to zoom to:
+          </div>
 
           <p>
             <select id="dropdown_muni">
@@ -153,17 +153,43 @@
               <option value="Worcester Township">Worcester Township</option>
             </select>
           </p>
+          <div>
+            <span class="green-text italic">Filter the points</span>
+            by essential service type:
+          </div>
+
+          <p>
+            <select id="dropdown_category">
+              <option value="all" selected>(all)</option>
+              <option value="Public School">Public Schools</option>
+              <option value="Private School">Private Schools</option>
+              <option value="School - College, University">
+                Colleges/Universities
+              </option>
+              <option value="Health Facility">Health Care Facilities</option>
+              <option value="Food Store">Food Stores</option>
+              <option value="Activity Center for Seniors or Disabled">
+                Activity Centers for Senior/Disabled
+              </option>
+              <option value="Municipal Buildings">Municipal Buildings</option>
+              <option value="trailhead">Trailheads</option>
+              <option value="Libraries">Libraries</option>
+              <option value="Shopping Centers">Shopping Centers</option>
+            </select>
+          </p>
+
+          <div>
+            <span class="green-text italic"> Click on a point </span>
+            to learn more about pedestrian accessibility at that location, and
+            <span class="green-text italic"> click on a blue gap line </span>
+            to see all places that may have increased accessibility if the gap
+            were filled.
+          </div>
 
           <hr />
           <div class="btn-group">
             <button class="button" onclick="location.href='index.html'">
               About this map
-            </button>
-            <button
-              class="button"
-              onclick="location.href='by-destination.html'"
-            >
-              Explore by Destination
             </button>
           </div>
         </div>
@@ -171,16 +197,36 @@
         <div id="stat-box" class="box-overlay">
           <h2>Filling this gap could:</h2>
           <ul>
-            <li id="stat-destinations">
-              improve pedestrian connectivity to
-              <span class="green-text">X</span>
-              destinations
-            </li>
             <li id="stat-island">
               connect
               <span class="green-text">X</span> existing sidewalk islands
             </li>
+            <li id="stat-destinations">
+              improve pedestrian connectivity to
+              <span class="green-text">X</span>
+              destinations
+              <ul>
+                <li>X</li>
+                <li>Y</li>
+              </ul>
+            </li>
           </ul>
+        </div>
+        <div id="info-box" class="box-overlay">
+          <table>
+            <tr>
+              <td style="text-align: left; width: 50%">
+                <h4>Walkshed Size (in square miles)</h4>
+              </td>
+              <td style="text-align: right; width: 50%">
+                <div id="selected-poi-ratio">Placeholder percentage</div>
+              </td>
+            </tr>
+          </table>
+
+          <div id="graph">
+            <canvas id="barChart"></canvas>
+          </div>
         </div>
       </div>
 
@@ -188,14 +234,14 @@
         <div class="box-overlay">
           <!-- <h3>This is a placeholder for the legend</h3> -->
           <img
-            id="gap-legend"
+            id="poi-legend"
             style="width: 100%"
-            src="./img/Legends_Municipality_Legend.png"
+            src="./img/Legends_POI_Legend_Destination_Map.png"
           />
           <img
-            id="poi-legend"
+            id="walkshed-legend"
             style="width: 100%; display: none"
-            src="./img/Legends_muni-map-pois.png"
+            src="./img/Legends_Walkshed_Sidewalk_Legend_Destination_Map.png"
           />
         </div>
       </div>

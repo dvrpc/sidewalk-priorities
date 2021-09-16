@@ -17,7 +17,7 @@ const paint_props = {
   all_pois: {
     id: "all_pois",
     attribute: "circle-radius",
-    style: ["interpolate", ["linear"], ["zoom"], 10, 4, 18, 8],
+    style: ["interpolate", ["linear"], ["zoom"], 10, 2.5, 18, 8],
   },
   selected_poi: {
     id: "selected_poi",

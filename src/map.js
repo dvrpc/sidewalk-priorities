@@ -1,24 +1,17 @@
 import "./css/style.css";
 import { get_query_params } from "./js/query.js";
-import { data_sources } from "./js/destination_map/sources.js";
+import { data_sources } from "./js/map/sources.js";
+import { poi_click, poi_click_logic, gap_click } from "./js/map/clicks.js";
+import { wire_mouse_hover } from "./js/map/hover.js";
+import { makeMap } from "./js/map/map.js";
+import { map_layers_group_1, map_layers_group_2 } from "./js/map/layers.js";
+import { paint_props } from "./js/map/paint_props";
+import { initialGeojsonLoad } from "./js/map/api.js";
 import {
-  poi_click,
-  click_logic,
-  gap_click,
-} from "./js/destination_map/clicks.js";
-import { wire_mouse_hover } from "./js/destination_map/hover.js";
-import { makeMap } from "./js/destination_map/map.js";
-import {
-  map_layers_group_1,
-  map_layers_group_2,
-} from "./js/destination_map/layers.js";
-import { paint_props } from "./js/destination_map/paint_props";
-import { initialGeojsonLoad } from "./js/destination_map/api.js";
-import { wire_dropdown_behavior } from "./js/destination_map/dropdown";
-import {
-  update_graph_with_api_data,
-  makeGraph,
-} from "./js/destination_map/graph.js";
+  wire_poi_dropdown_behavior,
+  wire_muni_dropdown_behavior,
+} from "./js/map/dropdown";
+import { update_graph_with_api_data, makeGraph } from "./js/map/graph.js";
 
 const map = makeMap();
 const bar_chart = makeGraph();
@@ -65,12 +58,13 @@ map.on("load", function () {
   wire_mouse_hover(map);
 
   // Wire up the dropdown behavior
-  wire_dropdown_behavior(map);
+  wire_poi_dropdown_behavior(map);
+  wire_muni_dropdown_behavior(map);
 
   let params = get_query_params();
   if (params) {
     console.log(params);
-    click_logic(
+    poi_click_logic(
       map,
       bar_chart,
       params.id,
