@@ -21,13 +21,24 @@ body {
   );
 }
 
-.header-block {
+tabl {
+  width: 100%;
+}
+
+td {
+  height: 100%;
+  max-width: 50vw;
+  /* background-color: blue; */
+}
+
+/* .header-block {
   position: absolute;
   top: 2%;
   left: 2%;
   margin: 0 auto;
   width: 44vw;
   z-index: 1;
+  display: table-cell;
 }
 
 .video-block {
@@ -38,15 +49,26 @@ body {
   width: 50vw;
   z-index: 1;
   padding-bottom: 2%;
+  display: table-cell;
 }
+
+.wrapper {
+  display: table;
+} */
+
 .box-overlay {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
+  margin: 0 20px;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid white;
   box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.3);
   margin-top: 2vh;
   border-radius: 5px;
+}
+
+.box-overlay-black {
+  background-color: rgba(0, 0, 0, 1);
+  border: 1px solid black;
 }
 
 button {
@@ -102,12 +124,15 @@ table {
   width: 100%;
   text-align: center;
 }
+#video-at-bottom {
+  display: none;
+}
 @media only screen and (max-width: 1200px) {
   h1 {
     font-size: 1rem;
   }
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 700px) {
   #mcpc-logo {
     width: 18vw;
   }
@@ -120,7 +145,13 @@ table {
   button {
     width: 100px;
   }
-  .video-block {
+  #video-at-right {
+    display: none;
+  }
+  #video-at-bottom {
+    display: inline;
+  }
+  /* .video-block {
     position: relative;
     left: 0.5%;
     right: auto;
@@ -131,5 +162,5 @@ table {
     position: relative;
     width: 91vw;
     left: 0.5%;
-  }
+  } */
 }
