@@ -1,7 +1,12 @@
 import "./css/style.css";
 import { get_query_params } from "./js/query.js";
 import { data_sources } from "./js/map/sources.js";
-import { poi_click, poi_click_logic, gap_click } from "./js/map/clicks.js";
+import {
+  poi_click,
+  poi_click_logic,
+  gap_click,
+  sw_click,
+} from "./js/map/clicks.js";
 import { wire_mouse_hover } from "./js/map/hover.js";
 import { makeMap } from "./js/map/map.js";
 import { map_layers_group_1, map_layers_group_2 } from "./js/map/layers.js";
@@ -55,6 +60,7 @@ map.on("load", function () {
   // Wire up click and hover interactions
   poi_click(map, bar_chart);
   gap_click(map);
+  sw_click(map);
   wire_mouse_hover(map);
 
   // Wire up the dropdown behavior

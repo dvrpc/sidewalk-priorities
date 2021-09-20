@@ -309,6 +309,67 @@ const reload_pois_near_gap = (map, uid) => {
   request.send();
 };
 
+const reload_pois_near_sw = (map, lngLat) => {
+  console.log(lngLat);
+  let url =
+    api_url_base() +
+    "/sidewalk/pois-near-existing-sidewalk/?lng=" +
+    lngLat.lng +
+    "&lat=" +
+    lngLat.lat;
+
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+      // retrieve the JSON from the response
+      var json = JSON.parse(this.response);
+
+      map.getSource("selected-pois").setData(json);
+      map.setPaintProperty("selected_pois", "circle-stroke-opacity", 1);
+
+      // Prepare and set the text in the info box
+      var num_pois = Object.keys(json.features).length;
+
+      let all_categories = [];
+
+      json.features.forEach((feature) => {
+        let category = feature.properties.category;
+        all_categories.push(category);
+      });
+      const counts = {};
+
+      for (const category of all_categories) {
+        counts[category] = counts[category] ? counts[category] + 1 : 1;
+      }
+      console.log(counts);
+
+      let text =
+        'provides pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
+        num_pois +
+        "</span> destinations: <ul>";
+
+      for (const [category, num_times] of Object.entries(counts).sort(
+        (a, b) => b[1] - a[1]
+      )) {
+        let nice_category_name = nice_category_name_for_bullets(
+          category,
+          num_times
+        );
+
+        text +=
+          "<li>" + num_times.toString() + " " + nice_category_name + "</li>";
+      }
+
+      text += "</ul>";
+
+      set_text_to_div(text, "stat-destinations");
+    }
+  };
+  request.send();
+};
+
 export {
   reload_gaps_near_poi,
   initialGeojsonLoad,
@@ -317,4 +378,5 @@ export {
   reload_selected_muni,
   reload_gaps_within_muni,
   reload_pois_near_gap,
+  reload_pois_near_sw,
 };

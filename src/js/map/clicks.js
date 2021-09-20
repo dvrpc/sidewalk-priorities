@@ -1,5 +1,9 @@
 import { sw_filter, osm_filter } from "./layers.js";
-import { reload_gaps_near_poi, reload_pois_near_gap } from "./api.js";
+import {
+  reload_gaps_near_poi,
+  reload_pois_near_gap,
+  reload_pois_near_sw,
+} from "./api.js";
 import { title_cased_text, convert_ratio_to_text } from "./text.js";
 import { update_graph_with_api_data } from "./graph.js";
 import {
@@ -13,7 +17,9 @@ import {
   filter_osm_iso_layers_by_id,
   filter_poi_layers_by_id,
   show_osm_iso_layers,
+  show_list_item,
 } from "./switches.js";
+import { sw_zoom_threshold } from "./hover.js";
 
 const gap_click_logic = (map, uid, map_center, island_count) => {
   var id_filter = ["in", "uid", uid];
@@ -44,7 +50,9 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   }
 
   set_text_to_div(text, "stat-island");
+  show_list_item("stat-island");
 
+  set_text_to_div("Filling this gap could:", "gap-header");
   reload_pois_near_gap(map, uid);
 
   show_element("stat-box");
@@ -134,4 +142,28 @@ const gap_click = (map) => {
   });
 };
 
-export { poi_click, poi_click_logic, gap_click };
+const sw_click = (map) => {
+  map.on("click", "sw", function (e) {
+    var props = e.features[0].properties;
+    console.log(props);
+
+    if (map.getZoom() > sw_zoom_threshold) {
+      reload_pois_near_sw(map, e.lngLat);
+
+      hide_osm_isos(map);
+      map.setFilter("selected_poi", ["==", "type", "none"]);
+
+      map.setPaintProperty("clicked_gap", "line-opacity", 0);
+
+      set_text_to_div("This existing sidewalk:", "gap-header");
+
+      hide_element("stat-island");
+
+      show_element("stat-box");
+      hide_element("info-box");
+      hide_element("walkshed-legend");
+      show_element("selected-legend");
+    }
+  });
+};
+export { poi_click, poi_click_logic, gap_click, sw_click };
