@@ -62,6 +62,12 @@ const show_element = (div_id) => {
   element.style.setProperty("display", "block");
 };
 
+const show_list_item = (div_id) => {
+  // Set the display to 'list-item' for a given div_id
+  let element = document.getElementById(div_id);
+  element.style.setProperty("display", "list-item");
+};
+
 const show_osm_iso_layers = (map) => {
   // Set the opacity on the OSM iso polygons to be visible
 
@@ -113,4 +119,5 @@ export {
   filter_osm_iso_layers_by_id,
   filter_poi_layers_by_id,
   show_osm_iso_layers,
+  show_list_item,
 };
