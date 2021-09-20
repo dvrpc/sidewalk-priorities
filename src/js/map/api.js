@@ -346,7 +346,7 @@ const reload_pois_near_sw = (map, lngLat) => {
       console.log(counts);
 
       let text =
-        'provides pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
+        'could provide pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
         num_pois +
         "</span> destinations: <ul>";
 
