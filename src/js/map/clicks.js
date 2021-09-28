@@ -61,6 +61,12 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   hide_element("info-box");
   hide_element("walkshed-legend");
   show_element("selected-legend");
+
+  map.setFilter("selected_poi_entrypoints", [
+    "==",
+    "type",
+    "none - this filter should return zero results",
+  ]);
 };
 
 const poi_click_logic = (
@@ -155,6 +161,12 @@ const sw_click = (map) => {
       map.setFilter("selected_poi", ["==", "type", "none"]);
 
       map.setPaintProperty("clicked_gap", "line-opacity", 0);
+
+      map.setFilter("selected_poi_entrypoints", [
+        "==",
+        "type",
+        "none - this filter should return zero results",
+      ]);
 
       set_text_to_div("This existing sidewalk:", "gap-header");
 
