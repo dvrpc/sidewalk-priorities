@@ -46,46 +46,46 @@ const convert_ratio_to_text = (ratio_as_float) => {
   return ratio_text;
 };
 
-const nice_category_name_for_bullets = (original_text, count_of_occurances) => {
-  const as_one_item = {
-    "Public School": "Public School",
-    "Private School": "Private School",
-    "School - College, University": "College/University",
-    "Health Facility": "Health Care Facility",
-    "Food Store": "Food Store",
-    "Activity Center for Seniors or Disabled":
-      "Activity Center for Senior/Disabled",
-    "Municipal Buildings": "Municipal Building",
-    Libraries: "Library",
-    "Shopping Centers": "Shopping Center",
-    Parks: "Park",
-    "SEPTA regional rail": "SEPTA Regional Rail stop",
-    "SEPTA norristown high speed line": "SEPTA Norristown High Speed Line stop",
-    "SEPTA bus": "SEPTA Bus stop",
-  };
-  const as_many_items = {
-    "Public School": "Public Schools",
-    "Private School": "Private Schools",
-    "School - College, University": "Colleges/Universities",
-    "Health Facility": "Health Care Facilities",
-    "Food Store": "Food Stores",
-    "Activity Center for Seniors or Disabled":
-      "Activity Centers for Senior/Disabled",
-    "Municipal Buildings": "Municipal Buildings",
-    Libraries: "Libraries",
-    "Shopping Centers": "Shopping Centers",
-    Parks: "Parks",
-    "SEPTA regional rail": "SEPTA Regional Rail stops",
-    "SEPTA norristown high speed line":
-      "SEPTA Norristown High Speed Line stops",
-    "SEPTA bus": "SEPTA Bus stops",
-  };
+const pois_as_singular_item = {
+  "Public School": "Public School",
+  "Private School": "Private School",
+  "School - College, University": "College/University",
+  "Health Facility": "Health Care Facility",
+  "Food Store": "Food Store",
+  "Activity Center for Seniors or Disabled":
+    "Activity Center for Senior/Disabled",
+  "Municipal Buildings": "Municipal Building",
+  Libraries: "Library",
+  "Shopping Centers": "Shopping Center",
+  Parks: "Park",
+  "SEPTA regional rail": "SEPTA Regional Rail stop",
+  "SEPTA norristown high speed line": "SEPTA Norristown High Speed Line stop",
+  "SEPTA bus": "SEPTA Bus stop",
+};
 
+const pois_as_many_items = {
+  "Public School": "Public Schools",
+  "Private School": "Private Schools",
+  "School - College, University": "Colleges/Universities",
+  "Health Facility": "Health Care Facilities",
+  "Food Store": "Food Stores",
+  "Activity Center for Seniors or Disabled":
+    "Activity Centers for Senior/Disabled",
+  "Municipal Buildings": "Municipal Buildings",
+  Libraries: "Libraries",
+  "Shopping Centers": "Shopping Centers",
+  Parks: "Parks",
+  "SEPTA regional rail": "SEPTA Regional Rail stops",
+  "SEPTA norristown high speed line": "SEPTA Norristown High Speed Line stops",
+  "SEPTA bus": "SEPTA Bus stops",
+};
+
+const nice_category_name_for_bullets = (original_text, count_of_occurances) => {
   let text = "";
   if (count_of_occurances == 1) {
-    text = as_one_item[original_text];
+    text = pois_as_singular_item[original_text];
   } else {
-    text = as_many_items[original_text];
+    text = pois_as_many_items[original_text];
   }
   return text;
 };
@@ -94,4 +94,6 @@ export {
   title_cased_text,
   convert_ratio_to_text,
   nice_category_name_for_bullets,
+  pois_as_singular_item,
+  pois_as_many_items,
 };

@@ -52,6 +52,8 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   set_text_to_div(text, "stat-island");
   show_list_item("stat-island");
 
+  set_text_to_div("Near a Missing Gap", "subtitle");
+
   set_text_to_div("Filling this gap could:", "gap-header");
   reload_pois_near_gap(map, uid);
 
@@ -59,6 +61,12 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   hide_element("info-box");
   hide_element("walkshed-legend");
   show_element("selected-legend");
+
+  map.setFilter("selected_poi_entrypoints", [
+    "==",
+    "type",
+    "none - this filter should return zero results",
+  ]);
 };
 
 const poi_click_logic = (
@@ -145,7 +153,6 @@ const gap_click = (map) => {
 const sw_click = (map) => {
   map.on("click", "sw", function (e) {
     var props = e.features[0].properties;
-    console.log(props);
 
     if (map.getZoom() > sw_zoom_threshold) {
       reload_pois_near_sw(map, e.lngLat);
@@ -155,9 +162,17 @@ const sw_click = (map) => {
 
       map.setPaintProperty("clicked_gap", "line-opacity", 0);
 
+      map.setFilter("selected_poi_entrypoints", [
+        "==",
+        "type",
+        "none - this filter should return zero results",
+      ]);
+
       set_text_to_div("This existing sidewalk:", "gap-header");
 
       hide_element("stat-island");
+
+      set_text_to_div("Around an Existing Sidewalk", "subtitle");
 
       show_element("stat-box");
       hide_element("info-box");

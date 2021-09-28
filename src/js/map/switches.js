@@ -45,6 +45,13 @@ const hide_layers = (map) => {
   stroke_opacity_layers.forEach((item) => {
     map.setPaintProperty(item, "circle-stroke-opacity", 0);
   });
+
+  // ENTRYPOINTS FOR SELECTED POI
+  map.setFilter("selected_poi_entrypoints", [
+    "==",
+    "type",
+    "none - this filter should return zero results",
+  ]);
 };
 
 const hide_element = (div_id) => {

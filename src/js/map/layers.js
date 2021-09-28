@@ -22,6 +22,7 @@ const map_layers_group_1 = {
     },
     filter: ["==", "CNTY_NAME", "Montgomery County"],
   },
+
   iso_osm: {
     id: "iso_osm",
     type: "fill",
@@ -33,6 +34,7 @@ const map_layers_group_1 = {
     },
     filter: osm_filter,
   },
+
   iso_osm_outline: {
     id: "iso_osm_outline",
     type: "line",
@@ -46,6 +48,7 @@ const map_layers_group_1 = {
     },
     filter: osm_filter,
   },
+
   iso_sw: {
     id: "iso_sw",
     type: "fill",
@@ -57,6 +60,7 @@ const map_layers_group_1 = {
     },
     filter: sw_filter,
   },
+
   iso_sw_outline: {
     id: "iso_sw_outline",
     type: "line",
@@ -95,6 +99,7 @@ const map_layers_group_2 = {
     },
     filter: ["all", ["==", "line_type", 1], ["==", "county", "MONTGOMERY"]],
   },
+
   xwalk: {
     id: "xwalk",
     type: "line",
@@ -106,58 +111,11 @@ const map_layers_group_2 = {
       "line-color": "black",
     },
     layout: {
-      // make layer visible by default
       visibility: "visible",
     },
     filter: ["all", ["==", "line_type", 2], ["==", "county", "MONTGOMERY"]],
   },
-  // clicked_gap: {
-  //   id: "clicked_gap",
-  //   type: "line",
-  //   source: "mcpcv1-tiles",
-  //   "source-layer": "montco_missing_sidewalks",
-  //   paint: {
-  //     "line-color": "yellow",
-  //     "line-opacity": 0,
-  //     "line-width": {
-  //       property: "island_count",
-  //       default: 100,
-  //       stops: [
-  //         [0, 3],
-  //         [1, 10],
-  //         [2, 20],
-  //       ],
-  //     },
-  //   },
-  //   layout: {
-  //     // make layer visible by default
-  //     visibility: "visible",
-  //   },
-  // },
-  // gaps: {
-  //   id: "gaps",
-  //   type: "line",
-  //   source: "mcpcv1-tiles",
-  //   "source-layer": "montco_missing_sidewalks",
-  //   paint: {
-  //     "line-color": "rgb(57,83,164)",
-  //     "line-opacity": 1,
-  //     "line-width": {
-  //       property: "island_count",
-  //       default: 100,
-  //       stops: [
-  //         [0, 1],
-  //         [1, 5],
-  //         [2, 10],
-  //       ],
-  //     },
-  //   },
-  //   layout: {
-  //     // make layer visible by default
-  //     visibility: "visible",
-  //   },
-  //   // filter: ["==", "uid", "-1"],
-  // },
+
   selected_poi_entrypoints: {
     id: "selected_poi_entrypoints",
     type: "circle",
@@ -174,6 +132,7 @@ const map_layers_group_2 = {
     },
     filter: ["==", "type", "none - this filter should return zero results"],
   },
+
   all_pois: {
     id: "all_pois",
     type: "circle",
@@ -199,6 +158,7 @@ const map_layers_group_2 = {
       },
     },
   },
+
   selected_poi: {
     id: "selected_poi",
     type: "circle",
