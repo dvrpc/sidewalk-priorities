@@ -15,6 +15,9 @@ const bindPopup = (map, html_msg, click) => {
    * @param {string} html_msg - text that gets dropped into the popup, including HTML tags
    * @param click - The click event from the user's interaction
    */
+
+  clearPopups();
+
   var popup = newPopup();
   popup.setLngLat(click.lngLat).setHTML(html_msg).addTo(map);
 };

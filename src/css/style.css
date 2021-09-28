@@ -161,6 +161,12 @@ hr {
   display: none;
 }
 
+.centered {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
 @media only screen and (max-width: 760px) {
   #headerblock {
     width: 28vw;
