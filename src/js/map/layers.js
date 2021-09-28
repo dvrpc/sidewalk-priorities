@@ -111,53 +111,53 @@ const map_layers_group_2 = {
     },
     filter: ["all", ["==", "line_type", 2], ["==", "county", "MONTGOMERY"]],
   },
-  clicked_gap: {
-    id: "clicked_gap",
-    type: "line",
-    source: "mcpcv1-tiles",
-    "source-layer": "montco_missing_sidewalks",
-    paint: {
-      "line-color": "yellow",
-      "line-opacity": 0,
-      "line-width": {
-        property: "island_count",
-        default: 100,
-        stops: [
-          [0, 3],
-          [1, 10],
-          [2, 20],
-        ],
-      },
-    },
-    layout: {
-      // make layer visible by default
-      visibility: "visible",
-    },
-  },
-  gaps: {
-    id: "gaps",
-    type: "line",
-    source: "mcpcv1-tiles",
-    "source-layer": "montco_missing_sidewalks",
-    paint: {
-      "line-color": "rgb(57,83,164)",
-      "line-opacity": 0,
-      "line-width": {
-        property: "island_count",
-        default: 100,
-        stops: [
-          [0, 1],
-          [1, 5],
-          [2, 10],
-        ],
-      },
-    },
-    layout: {
-      // make layer visible by default
-      visibility: "visible",
-    },
-    filter: ["==", "uid", "-1"],
-  },
+  // clicked_gap: {
+  //   id: "clicked_gap",
+  //   type: "line",
+  //   source: "mcpcv1-tiles",
+  //   "source-layer": "montco_missing_sidewalks",
+  //   paint: {
+  //     "line-color": "yellow",
+  //     "line-opacity": 0,
+  //     "line-width": {
+  //       property: "island_count",
+  //       default: 100,
+  //       stops: [
+  //         [0, 3],
+  //         [1, 10],
+  //         [2, 20],
+  //       ],
+  //     },
+  //   },
+  //   layout: {
+  //     // make layer visible by default
+  //     visibility: "visible",
+  //   },
+  // },
+  // gaps: {
+  //   id: "gaps",
+  //   type: "line",
+  //   source: "mcpcv1-tiles",
+  //   "source-layer": "montco_missing_sidewalks",
+  //   paint: {
+  //     "line-color": "rgb(57,83,164)",
+  //     "line-opacity": 1,
+  //     "line-width": {
+  //       property: "island_count",
+  //       default: 100,
+  //       stops: [
+  //         [0, 1],
+  //         [1, 5],
+  //         [2, 10],
+  //       ],
+  //     },
+  //   },
+  //   layout: {
+  //     // make layer visible by default
+  //     visibility: "visible",
+  //   },
+  //   // filter: ["==", "uid", "-1"],
+  // },
   selected_poi_entrypoints: {
     id: "selected_poi_entrypoints",
     type: "circle",

@@ -56,9 +56,12 @@ const nice_category_name_for_bullets = (original_text, count_of_occurances) => {
     "Activity Center for Seniors or Disabled":
       "Activity Center for Senior/Disabled",
     "Municipal Buildings": "Municipal Building",
-    trailhead: "Trailhead",
     Libraries: "Library",
     "Shopping Centers": "Shopping Center",
+    Parks: "Park",
+    "SEPTA regional rail": "SEPTA Regional Rail stop",
+    "SEPTA norristown high speed line": "SEPTA Norristown High Speed Line stop",
+    "SEPTA bus": "SEPTA Bus stop",
   };
   const as_many_items = {
     "Public School": "Public Schools",
@@ -69,9 +72,13 @@ const nice_category_name_for_bullets = (original_text, count_of_occurances) => {
     "Activity Center for Seniors or Disabled":
       "Activity Centers for Senior/Disabled",
     "Municipal Buildings": "Municipal Buildings",
-    trailhead: "Trailheads",
     Libraries: "Libraries",
     "Shopping Centers": "Shopping Centers",
+    Parks: "Parks",
+    "SEPTA regional rail": "SEPTA Regional Rail stops",
+    "SEPTA norristown high speed line":
+      "SEPTA Norristown High Speed Line stops",
+    "SEPTA bus": "SEPTA Bus stops",
   };
 
   let text = "";

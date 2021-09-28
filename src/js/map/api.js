@@ -137,6 +137,88 @@ const load_pois_near_single_gap = (map, layer_insertion_order) => {
   );
 };
 
+const load_gaps = (map, layer_insertion_order) => {
+  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=60943";
+  let source_name = "gap-lines";
+  let blue_config = {
+    id: "gaps",
+    type: "line",
+    source: source_name,
+    paint: {
+      "line-color": "rgb(57,83,164)",
+      "line-opacity": 0,
+      "line-width": {
+        property: "island_count",
+        default: 100,
+        stops: [
+          [0, 1],
+          [1, 5],
+          [2, 10],
+        ],
+      },
+    },
+  };
+  load_data_and_layer_from_api_url(
+    map,
+    url,
+    layer_insertion_order,
+    source_name,
+    blue_config
+  );
+
+  // let yellow_config = {
+  //   id: "clicked_gap",
+  //   type: "line",
+  //   source: source_name,
+  //   paint: {
+  //     "line-color": "yellow",
+  //     "line-opacity": 0,
+  //     "line-width": {
+  //       property: "island_count",
+  //       default: 100,
+  //       stops: [
+  //         [0, 3],
+  //         [1, 10],
+  //         [2, 20],
+  //       ],
+  //     },
+  //   },
+  // };
+
+  // map.addLayer(yellow_config, layer_insertion_order);
+};
+
+const yellow_gaps = (map, layer_insertion_order) => {
+  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=60943";
+  let source_name = "selected-gap";
+  let yellow_config = {
+    id: "clicked_gap",
+    type: "line",
+    source: source_name,
+    paint: {
+      "line-color": "yellow",
+      "line-opacity": 1,
+      "line-width": {
+        property: "island_count",
+        default: 100,
+        stops: [
+          [0, 3],
+          [1, 10],
+          [2, 20],
+        ],
+      },
+    },
+  };
+  load_data_and_layer_from_api_url(
+    map,
+    url,
+    layer_insertion_order,
+    source_name,
+    yellow_config
+  );
+
+  // map.addLayer(yellow_config, layer_insertion_order);
+};
 const initialGeojsonLoad = (map, firstSymbolId) => {
   /**
    * Load the API's geojson response for the first time
@@ -150,6 +232,8 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
   load_pois_near_single_gap(map, firstSymbolId);
   load_munis(map, firstSymbolId);
   load_one_muni(map, firstSymbolId);
+  load_gaps(map, firstSymbolId);
+  yellow_gaps(map, firstSymbolId);
 
   // load_missing_links(map, firstSymbolId);
 };
@@ -216,9 +300,8 @@ const reload_gaps = (map, url) => {
     if (this.status >= 200 && this.status < 400) {
       var json = JSON.parse(this.response);
 
-      var id_filter = ["in", "uid"].concat(json);
-
-      map.setFilter("gaps", id_filter);
+      map.getSource("gap-lines").setData(json);
+      map.getSource("selected-gap").setData(json);
 
       map.setPaintProperty("gaps", "line-opacity", 0.5);
     }
