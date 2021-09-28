@@ -14,4 +14,18 @@ const makeMap = () => {
   });
 };
 
-export { makeMap };
+const find_first_symbol_id = (map) => {
+  const layers = map.getStyle().layers;
+  // Find the index of the first symbol layer in the map style
+  let firstSymbolId;
+  for (const layer of layers) {
+    if (layer === "symbol") {
+      firstSymbolId = layer.id;
+      break;
+    }
+  }
+
+  return firstSymbolId;
+};
+
+export { makeMap, find_first_symbol_id };

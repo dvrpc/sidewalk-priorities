@@ -8,7 +8,7 @@ import {
   sw_click,
 } from "./js/map/clicks.js";
 import { wire_mouse_hover } from "./js/map/hover.js";
-import { makeMap } from "./js/map/map.js";
+import { makeMap, find_first_symbol_id } from "./js/map/map.js";
 import { map_layers_group_1, map_layers_group_2 } from "./js/map/layers.js";
 import { paint_props } from "./js/map/paint_props";
 import { initialGeojsonLoad } from "./js/map/api.js";
@@ -35,19 +35,21 @@ map.on("load", function () {
    *  - Wire up dropdown selector
    */
 
+  let label_insertion_spot = find_first_symbol_id(map);
+
   update_graph_with_api_data(bar_chart, "1007");
 
   // Add map data sources and layer styling
   for (const src in data_sources) map.addSource(src, data_sources[src]);
   for (const lyr in map_layers_group_1)
-    map.addLayer(map_layers_group_1[lyr], "road-label");
+    map.addLayer(map_layers_group_1[lyr], label_insertion_spot);
 
   // Add initial geojson layer from API
-  initialGeojsonLoad(map, "road-label");
+  initialGeojsonLoad(map, label_insertion_spot);
 
   // Add additional tilesets on top of geojson API layer
   for (const lyr in map_layers_group_2)
-    map.addLayer(map_layers_group_2[lyr], "road-label");
+    map.addLayer(map_layers_group_2[lyr], label_insertion_spot);
 
   // Load scale-based paint properties
   for (const paint in paint_props)
