@@ -1,5 +1,5 @@
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiYWFyb25kdnJwYyIsImEiOiJja2NvN2s5dnAwaWR2MnptbzFwYmd2czVvIn0.Fcc34gzGME_zHR5q4RnSOg";
+  "pk.eyJ1IjoiZHZycGNvbWFkIiwiYSI6ImNrczZlNDBkZzFnOG0ydm50bXR0dTJ4cGYifQ.VaJDo9EtH2JyzKm3cC0ypA";
 
 const makeMap = () => {
   /**
@@ -8,7 +8,7 @@ const makeMap = () => {
    */
   return new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/aarondvrpc/ckqhcmx6x95x318pgqzt4jicq",
+    style: "mapbox://styles/dvrpcomad/cks6e6uk5dawe18rzxek2oyjf",
     center: [-75.36277290123333, 40.201296611075346],
     zoom: 10,
   });
