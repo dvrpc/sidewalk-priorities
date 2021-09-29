@@ -55,13 +55,27 @@ button:hover {
   position: absolute;
   top: 2%;
   left: 2%;
-  width: 29vw;
-  min-width: 400px;
+  width: 25vw;
+  min-width: 300px;
   z-index: 1;
 }
 
 table {
   width: 100%;
+}
+
+#dropdown-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+#text-about-gap-click {
+  display: none;
+}
+
+.dropdown-item {
+  width: 44%;
 }
 
 #legendblock {
@@ -117,13 +131,6 @@ hr {
   color: #000000; /* old IE */
   background-color: #000000; /* Modern Browsers */
 }
-
-/* #infoblock {
-        position: absolute;
-        top: 10%;
-        left: 2%;
-        z-index: 2;
-    } */
 
 #info-box {
   display: none;
