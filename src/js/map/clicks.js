@@ -10,6 +10,7 @@ import {
   hide_extra_ui_boxes,
   hide_osm_isos,
   hide_layers,
+  show_element_inline,
   show_element,
   hide_element,
   set_text_to_div,
@@ -25,11 +26,10 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   var id_filter = ["in", "uid", uid];
 
   map.setFilter("clicked_gap", id_filter);
-  map.setPaintProperty("clicked_gap", "line-opacity", 0.8);
 
   map.flyTo({
     center: map_center,
-    zoom: 15,
+    zoom: 13,
     essential: true,
   });
 
@@ -67,6 +67,8 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
     "type",
     "none - this filter should return zero results",
   ]);
+
+  map.setPaintProperty("clicked_gap", "line-opacity", 0.8);
 };
 
 const poi_click_logic = (
@@ -112,6 +114,7 @@ const poi_click_logic = (
   show_element("gap-legend");
   hide_element("stat-box");
   hide_element("selected-legend");
+  show_element_inline("text-about-gap-click");
 };
 
 const poi_click = (map, graph) => {

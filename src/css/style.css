@@ -19,7 +19,7 @@ body {
 
 button {
   height: 40px;
-  width: 15vw;
+  width: 90%;
   max-width: 180px;
   position: relative;
   margin: 15px auto 15px auto;
@@ -34,6 +34,7 @@ button:hover {
   color: var(--green);
   border: 2px solid var(--green);
   background-color: var(--popup-color);
+  cursor: pointer;
 }
 
 .btn-group {
@@ -54,8 +55,8 @@ button:hover {
   position: absolute;
   top: 2%;
   left: 2%;
-  width: 29vw;
-  min-width: 400px;
+  width: 25vw;
+  min-width: 300px;
   z-index: 1;
 }
 
@@ -63,15 +64,36 @@ table {
   width: 100%;
 }
 
-/* updated vw from 22.5 to 29 to fit on laptop screen-MM */
+#dropdown-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+#text-about-gap-click {
+  display: none;
+}
+
+.dropdown-item {
+  width: 44%;
+}
 
 #legendblock {
   position: absolute;
   top: 2%;
   right: 2%;
-  width: 15vw;
-  min-width: 250px;
+  width: 12vw;
+  min-width: 210px;
   z-index: 1;
+}
+#about-box {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  width: 12vw;
+  min-width: 210px;
+  z-index: 2;
+  text-align: center;
 }
 
 .box-overlay {
@@ -110,13 +132,6 @@ hr {
   background-color: #000000; /* Modern Browsers */
 }
 
-/* #infoblock {
-        position: absolute;
-        top: 10%;
-        left: 2%;
-        z-index: 2;
-    } */
-
 #info-box {
   display: none;
   text-align: center;
@@ -140,29 +155,16 @@ hr {
   min-width: 100%;
   margin-bottom: 15px;
 }
-#about-box {
-  position: absolute;
-  bottom: 3%;
-  right: 3%;
-  width: 10vw;
-  z-index: 2;
-  /* text-align: right; */
-}
-#logo-box {
-  position: absolute;
-  bottom: 3%;
-  width: 100vw;
-  z-index: 1;
-  /* text-align: right; */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+
 #mcpc-logo,
 #dvrpc-logo {
-  width: 160px;
+  width: 90%;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
+/* #dvrpc-logo {
+  padding-bottom: 1vh;
+} */
 #gap-line-text {
   display: none;
   margin: 20px 0;
@@ -178,19 +180,22 @@ hr {
 .bold {
   font-weight: bold;
 }
+
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
 @media only screen and (max-width: 760px) {
   #headerblock {
     width: 28vw;
     top: 0%;
     width: 95vw;
   }
-  #mcpc-logo,
-  #dvrpc-logo {
-    width: 15vw;
-  }
   #legendblock {
     left: 2%;
-    bottom: 3%;
+    bottom: 2%;
+    width: 10vw;
+    min-width: 200px;
     top: auto;
     text-align: right;
   }
@@ -200,5 +205,14 @@ hr {
   }
   #mobile-text {
     display: block;
+  }
+
+  button {
+    height: auto;
+    width: 99%;
+  }
+  #about-box {
+    width: 30vw;
+    min-width: 130px;
   }
 }

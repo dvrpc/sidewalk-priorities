@@ -18,7 +18,7 @@ const api_url_base = () => {
 
   if (current_env == "development") {
     // var url = "https://omad-api-lf2k9.ondigitalocean.app";
-    var url = "http://localhost:8000";
+    var url = "http://localhost:8000/api/mcosp/v1";
   } else {
     var url = "https://omad-api-lf2k9.ondigitalocean.app";
   }
@@ -152,8 +152,8 @@ const load_gaps = (map, layer_insertion_order) => {
         default: 100,
         stops: [
           [0, 1],
-          [1, 5],
-          [2, 10],
+          [1, 3],
+          [2, 8],
         ],
       },
     },
@@ -165,27 +165,6 @@ const load_gaps = (map, layer_insertion_order) => {
     source_name,
     blue_config
   );
-
-  // let yellow_config = {
-  //   id: "clicked_gap",
-  //   type: "line",
-  //   source: source_name,
-  //   paint: {
-  //     "line-color": "yellow",
-  //     "line-opacity": 0,
-  //     "line-width": {
-  //       property: "island_count",
-  //       default: 100,
-  //       stops: [
-  //         [0, 3],
-  //         [1, 10],
-  //         [2, 20],
-  //       ],
-  //     },
-  //   },
-  // };
-
-  // map.addLayer(yellow_config, layer_insertion_order);
 };
 
 const yellow_gaps = (map, layer_insertion_order) => {

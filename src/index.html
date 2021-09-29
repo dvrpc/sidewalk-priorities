@@ -18,19 +18,38 @@
     <div>
       <table>
         <tr>
-          <td style="text-align: left">
+          <td id="text-box" style="text-align: left">
             <div class="box-overlay">
               <br />
-              <table>
+              <div id="logos">
+                <a href="https://www.dvrpc.org/" target="_blank">
+                  <img id="dvrpc-logo" src="./img/logo_blue.png" alt="" />
+                </a>
+
+                <a
+                  href="https://www.montcopa.org/490/Planning-Commission"
+                  target="_blank"
+                >
+                  <img id="mcpc-logo" src="./img/mcpc_logo.png" alt="" />
+                </a>
+              </div>
+              <!-- <table>
                 <tr>
                   <td>
-                    <img id="dvrpc-logo" src="./img/logo.png" alt="" />
+                    <a href="https://www.dvrpc.org/" target="_blank">
+                      <img id="dvrpc-logo" src="./img/logo_blue.png" alt="" />
+                    </a>
                   </td>
                   <td>
-                    <img id="mcpc-logo" src="./img/mcpc_logo.png" alt="" />
+                    <a
+                      href="https://www.montcopa.org/490/Planning-Commission"
+                      target="_blank"
+                    >
+                      <img id="mcpc-logo" src="./img/mcpc_logo.png" alt="" />
+                    </a>
                   </td>
                 </tr>
-              </table>
+              </table> -->
               <br />
               <hr />
               <h1>
@@ -40,14 +59,17 @@
               <hr />
 
               <p>
-                This map was designed to allow transportation planners to take a
-                deep dive into the pedestrian accessibility of essential
-                services in Montgomery County PA, building on top of DVRPC's
-                recent
+                This map was designed to allow transportation planners to see
+                the pedestrian accessibility of essential services in Montgomery
+                County PA, building on top of DVRPC's recent
                 <a
                   href="https://www.dvrpc.org/webmaps/sidewalk-gaps/"
                   target="_blank"
-                  >regional sidewalk gap analysis</a
+                  >Regional Sidewalk Gap Analysis</a
+                >
+                and
+                <a href="https://walk.dvrpc.org/" target="_blank">
+                  Sidewalk Inventory</a
                 >.
                 <br />
                 <br />
@@ -95,22 +117,50 @@
               </div>
               <hr />
               <div>
-                A
-                <a
-                  href="https://dvrpc.github.io/network-routing/"
-                  target="_blank"
-                >
-                  methodology writeup
-                </a>
-                is available, and any questions can be directed to:
-                <br />
-                <div style="text-align: right; padding-bottom: 10px">
+                <div style="padding-bottom: 10px; font-size: 85%">
+                  Please direct any questions to:
                   <a href="mailto:afraint@dvrpc.org">Aaron Fraint, AICP</a>
                   <span style="font-style: italic; font-size: 80%">
                     Associate Manager, DVRPC Office of Mobility Analysis &
                     Design
                   </span>
                 </div>
+              </div>
+
+              <div class="flex-and-spaced">
+                <a
+                  href="https://dvrpc.github.io/network-routing/"
+                  target="_blank"
+                >
+                  Documentation
+                </a>
+                <a
+                  href="https://www.dvrpc.org/Products/WEB22010"
+                  target="_blank"
+                >
+                  Abstract
+                </a>
+                <a href="https://www.dvrpc.org/policies" target="_blank">
+                  Policies
+                </a>
+                <a style="text-decoration: underline">
+                  <div class="accordion">Disclaimer</div>
+                </a>
+              </div>
+
+              <div class="panel">
+                <p>
+                  This web page is a public resource of general information. The
+                  Delaware Valley Regional Planning Commission (DVRPC) makes no
+                  warranty, representation, or guarantee as to the content,
+                  sequence, accuracy, timeliness, or completeness of any of the
+                  spatial data or database information provided herein. DVRPC
+                  and partner state, local, and other agencies shall assume no
+                  liability for errors, omissions, or inaccuracies in the
+                  information provided regardless of how caused; or any decision
+                  made or action taken or not taken by any person relying on any
+                  information or data furnished within.
+                </p>
               </div>
             </div>
           </td>
@@ -126,7 +176,7 @@
         </tr>
       </table>
 
-      <div id="video-at-bottom">
+      <div id="video-at-bottom" style="height: auto">
         <div class="box-overlay box-overlay-black">
           <video width="100%" height="auto" controls>
             <source src="img/tutorial.mp4" type="video/mp4" />
