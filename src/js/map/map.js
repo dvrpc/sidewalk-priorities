@@ -10,7 +10,7 @@ const makeMap = () => {
     container: "map",
     style: "mapbox://styles/dvrpcomad/cks6e6uk5dawe18rzxek2oyjf",
     center: [-75.36277290123333, 40.201296611075346],
-    zoom: 10,
+    zoom: 9.5,
   });
 };
 
