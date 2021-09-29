@@ -69,6 +69,11 @@ const gap_click_logic = (map, uid, map_center, island_count) => {
   ]);
 
   map.setPaintProperty("clicked_gap", "line-opacity", 0.8);
+
+  var muni_dropdown = document.getElementById("dropdown_category");
+  muni_dropdown.value = "all";
+
+  map.setFilter("all_pois", null);
 };
 
 const poi_click_logic = (
