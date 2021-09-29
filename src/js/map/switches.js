@@ -27,6 +27,7 @@ const hide_layers_from_gap_selection = (map) => {
   // Hide the layers that show the gap a user clicked on
   map.setPaintProperty("clicked_gap", "line-opacity", 0);
   map.setPaintProperty("selected_pois", "circle-stroke-opacity", 0);
+  hide_element("text-about-gap-click");
 };
 
 const hide_layers = (map) => {
@@ -67,6 +68,12 @@ const show_element = (div_id) => {
   // Set the display to 'block' for a given div_id
   let element = document.getElementById(div_id);
   element.style.setProperty("display", "block");
+};
+
+const show_element_inline = (div_id) => {
+  // Set the display to 'block' for a given div_id
+  let element = document.getElementById(div_id);
+  element.style.setProperty("display", "inline");
 };
 
 const show_list_item = (div_id) => {
@@ -120,6 +127,7 @@ export {
   hide_layers,
   hide_element,
   show_element,
+  show_element_inline,
   set_text_to_div,
   hide_osm_isos,
   hide_layers_from_gap_selection,

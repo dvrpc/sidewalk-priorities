@@ -8,6 +8,7 @@ import {
   hide_extra_ui_boxes,
   hide_layers,
   show_element,
+  show_element_inline,
   hide_element,
   set_text_to_div,
 } from "./switches.js";
@@ -77,6 +78,7 @@ const wire_poi_dropdown_behavior = (map) => {
     });
 
     hide_element("gap-legend");
+    hide_element("text-about-gap-click");
   });
 };
 
@@ -100,6 +102,8 @@ const wire_muni_dropdown_behavior = (map) => {
 
     hide_layers(map);
     show_element("gap-legend");
+
+    show_element_inline("text-about-gap-click");
   });
 };
 
