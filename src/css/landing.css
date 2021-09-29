@@ -87,6 +87,7 @@ button {
 button:hover {
   background-color: var(--green);
   color: white;
+  cursor: pointer;
 }
 
 .btn-group {
