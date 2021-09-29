@@ -349,7 +349,7 @@ const reload_pois_near_gap = (map, uid) => {
       let text =
         'improve pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
         num_pois +
-        "</span> destinations: <ul>";
+        "</span> destinations within one mile: <ul>";
 
       for (const [category, num_times] of Object.entries(counts).sort(
         (a, b) => b[1] - a[1]
@@ -410,7 +410,7 @@ const reload_pois_near_sw = (map, lngLat) => {
       let text =
         'could provide pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
         num_pois +
-        "</span> destinations: <ul>";
+        "</span> destinations within one mile: <ul>";
 
       for (const [category, num_times] of Object.entries(counts).sort(
         (a, b) => b[1] - a[1]
