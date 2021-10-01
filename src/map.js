@@ -1,5 +1,4 @@
 import "./css/style.css";
-import { get_query_params } from "./js/query.js";
 import { data_sources } from "./js/map/sources.js";
 import {
   poi_click,
@@ -68,17 +67,4 @@ map.on("load", function () {
   // Wire up the dropdown behavior
   wire_poi_dropdown_behavior(map);
   wire_muni_dropdown_behavior(map);
-
-  let params = get_query_params();
-  if (params) {
-    console.log(params);
-    poi_click_logic(
-      map,
-      bar_chart,
-      params.id,
-      [params.lng, params.lat],
-      params.name.replace("_", " "),
-      params.ab_ratio
-    );
-  }
 });
