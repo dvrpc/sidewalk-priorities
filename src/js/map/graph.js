@@ -45,7 +45,7 @@ const makeGraph = () => {
 const update_graph_with_api_data = (graph, uid) => {
   // make a GET request to parse the GeoJSON at the url
   // alert("Inside the reload block");
-  var url = api_url_base() + "/sidewalk/walkshed-area/?q=" + uid;
+  var url = api_url_base() + "/walkshed-area/?q=" + uid;
   var request = new XMLHttpRequest();
   request.open("GET", url, true);
   request.setRequestHeader("Access-Control-Allow-Origin", "*");

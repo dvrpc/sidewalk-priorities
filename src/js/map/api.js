@@ -16,11 +16,14 @@ const api_url_base = () => {
    */
   var current_env = process.env.NODE_ENV;
 
+  let production_api = "https://cloud.dvrpc.org/api/mcosp/v1";
+  let dev_api = "https://omad-api-lf2k9.ondigitalocean.app/sidewalk";
+  let local_api = "http://localhost:8000/api/mcosp/v1";
+
   if (current_env == "development") {
-    // var url = "https://omad-api-lf2k9.ondigitalocean.app";
-    var url = "http://localhost:8000/api/mcosp/v1";
+    var url = local_api;
   } else {
-    var url = "https://omad-api-lf2k9.ondigitalocean.app";
+    var url = production_api;
   }
   return url;
 };
@@ -59,7 +62,7 @@ const load_data_and_layer_from_api_url = (
 // MAP LOAD
 
 const load_munis = (map, layer_insertion_order) => {
-  let url = api_url_base() + "/sidewalk/all-munis";
+  let url = api_url_base() + "/all-munis/";
   let source_name = "all-munis";
   let layer_config = {
     id: "all-municipalities",
@@ -81,7 +84,7 @@ const load_munis = (map, layer_insertion_order) => {
 };
 
 const load_one_muni = (map, layer_insertion_order) => {
-  let url = api_url_base() + "/sidewalk/one-muni/?q=Abington%20Township";
+  let url = api_url_base() + "/one-muni/?q=Abington%20Township";
   let source_name = "one-muni";
   let layer_config = {
     source: source_name,
@@ -103,7 +106,7 @@ const load_one_muni = (map, layer_insertion_order) => {
 };
 
 const load_pois_near_single_gap = (map, layer_insertion_order) => {
-  let url = api_url_base() + "/sidewalk/pois-near-gap/?q=60943";
+  let url = api_url_base() + "/pois-near-gap/?q=60943";
   let source_name = "selected-pois";
   let layer_config = {
     id: "selected_pois",
@@ -138,7 +141,7 @@ const load_pois_near_single_gap = (map, layer_insertion_order) => {
 };
 
 const load_gaps = (map, layer_insertion_order) => {
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=60943";
+  let url = api_url_base() + "/nearby-gaps/?q=60943";
   let source_name = "gap-lines";
   let blue_config = {
     id: "gaps",
@@ -168,7 +171,7 @@ const load_gaps = (map, layer_insertion_order) => {
 };
 
 const yellow_gaps = (map, layer_insertion_order) => {
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=60943";
+  let url = api_url_base() + "/nearby-gaps/?q=60943";
   let source_name = "selected-gap";
   let yellow_config = {
     id: "clicked_gap",
@@ -224,9 +227,7 @@ const initialGeojsonLoad = (map, firstSymbolId) => {
 
 const fly_to_muni_centroid = (map, muni_name) => {
   let url =
-    api_url_base() +
-    "/sidewalk/one-muni-centroid/?q=" +
-    muni_name.replace(" ", "%20");
+    api_url_base() + "/one-muni-centroid/?q=" + muni_name.replace(" ", "%20");
 
   var request = new XMLHttpRequest();
   request.open("GET", url, true);
@@ -246,8 +247,7 @@ const fly_to_muni_centroid = (map, muni_name) => {
 };
 
 const reload_selected_muni = (map, muni_name) => {
-  let url =
-    api_url_base() + "/sidewalk/one-muni/?q=" + muni_name.replace(" ", "%20");
+  let url = api_url_base() + "/one-muni/?q=" + muni_name.replace(" ", "%20");
 
   // make a GET request to parse the GeoJSON at the url
   var request = new XMLHttpRequest();
@@ -296,7 +296,7 @@ const reload_gaps_near_poi = (map, poi_uid) => {
    * @param {mapboxgl.Map} map - The map object for the page
    * @param {number} poi_uid - This is the ID value for the specific POI
    */
-  let url = api_url_base() + "/sidewalk/nearby-gaps/?q=" + poi_uid;
+  let url = api_url_base() + "/nearby-gaps/?q=" + poi_uid;
   reload_gaps(map, url);
 };
 
@@ -309,15 +309,13 @@ const reload_gaps_within_muni = (map, muni_name) => {
    * @param {number} poi_uid - This is the ID value for the specific POI
    */
   let url =
-    api_url_base() +
-    "/sidewalk/gaps-within-muni/?q=" +
-    muni_name.replace(" ", "%20");
+    api_url_base() + "/gaps-within-muni/?q=" + muni_name.replace(" ", "%20");
 
   reload_gaps(map, url);
 };
 
 const reload_pois_near_gap = (map, uid) => {
-  let url = api_url_base() + "/sidewalk/pois-near-gap/?q=" + uid.toString();
+  let url = api_url_base() + "/pois-near-gap/?q=" + uid.toString();
 
   var request = new XMLHttpRequest();
   request.open("GET", url, true);
@@ -344,7 +342,6 @@ const reload_pois_near_gap = (map, uid) => {
       for (const category of all_categories) {
         counts[category] = counts[category] ? counts[category] + 1 : 1;
       }
-      console.log(counts);
 
       let text =
         'improve pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
@@ -372,10 +369,9 @@ const reload_pois_near_gap = (map, uid) => {
 };
 
 const reload_pois_near_sw = (map, lngLat) => {
-  console.log(lngLat);
   let url =
     api_url_base() +
-    "/sidewalk/pois-near-existing-sidewalk/?lng=" +
+    "/pois-near-existing-sidewalk/?lng=" +
     lngLat.lng +
     "&lat=" +
     lngLat.lat;
@@ -405,7 +401,6 @@ const reload_pois_near_sw = (map, lngLat) => {
       for (const category of all_categories) {
         counts[category] = counts[category] ? counts[category] + 1 : 1;
       }
-      console.log(counts);
 
       let text =
         'could provide pedestrian connectivity to <span class="green-text" style="font-weight: bold">' +
