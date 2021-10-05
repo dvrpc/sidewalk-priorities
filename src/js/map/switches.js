@@ -36,7 +36,12 @@ const hide_layers = (map) => {
   hide_osm_isos(map);
 
   // LINE LAYERS
-  let line_opacity_layers = ["gaps", "clicked_gap", "selected-municipality"];
+  let line_opacity_layers = [
+    "gaps",
+    "clicked_gap",
+    "selected-municipality",
+    "selected_existing_sidewalk",
+  ];
   line_opacity_layers.forEach((item) => {
     map.setPaintProperty(item, "line-opacity", 0);
   });
