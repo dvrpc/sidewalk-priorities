@@ -16,6 +16,8 @@ import {
   wire_muni_dropdown_behavior,
 } from "./js/map/dropdown";
 import { update_graph_with_api_data, makeGraph } from "./js/map/graph.js";
+import { add_selected_sidewalk_layer_to_map } from "./js/map/selected_existing_sidewalk.js";
+import { watch_zoom_level } from "./js/map/zoom_changes.js";
 
 const map = makeMap();
 const bar_chart = makeGraph();
@@ -34,7 +36,8 @@ map.on("load", function () {
    *  - Wire up dropdown selector
    */
 
-  let label_insertion_spot = find_first_symbol_id(map);
+  // let label_insertion_spot = find_first_symbol_id(map);
+  let label_insertion_spot = "road-label";
 
   update_graph_with_api_data(bar_chart, "1007");
 
@@ -58,6 +61,7 @@ map.on("load", function () {
       paint_props[paint].style
     );
 
+  add_selected_sidewalk_layer_to_map(map);
   // Wire up click and hover interactions
   poi_click(map, bar_chart);
   gap_click(map);
@@ -67,4 +71,6 @@ map.on("load", function () {
   // Wire up the dropdown behavior
   wire_poi_dropdown_behavior(map);
   wire_muni_dropdown_behavior(map);
+
+  watch_zoom_level(map);
 });
