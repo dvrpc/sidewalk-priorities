@@ -28,7 +28,7 @@ const wire_single_layer = (map, layername) => {
   });
 };
 
-const sw_zoom_threshold = 14;
+const ZOOM_THRESHOLD_FOR_LINE_INTERACTION = 12.99;
 
 const wire_mouse_hover = (map) => {
   /**
@@ -36,7 +36,7 @@ const wire_mouse_hover = (map) => {
    *
    * @param {mapboxgl.Map} map - The map object for the page
    */
-  var layers = ["all_pois", "gaps"];
+  var layers = ["all_pois"];
 
   layers.forEach((lyr) => wire_single_layer(map, lyr));
 
@@ -62,39 +62,35 @@ const wire_mouse_hover = (map) => {
   map.on("mouseenter", "gaps", function (e) {
     var msg =
       "<p class='italic centered'>Click this <span class='green-text'> gap </span> to learn more <br/> about nearby destinations</p>";
-    bindPopup(map, msg, e);
+
+    if (map.getZoom() > ZOOM_THRESHOLD_FOR_LINE_INTERACTION) {
+      map.getCanvas().style.cursor = "pointer";
+      bindPopup(map, msg, e);
+    }
   });
 
   // change mouse tip upon leaving feature
   map.on("mouseleave", "gaps", function (e) {
     clearPopups();
+    map.getCanvas().style.cursor = "";
   });
 
   // SIDEWALK features
 
-  map.on("mouseenter", "sw", () => {
-    if (map.getZoom() > sw_zoom_threshold) {
+  map.on("mouseenter", "sw", (e) => {
+    if (map.getZoom() > ZOOM_THRESHOLD_FOR_LINE_INTERACTION) {
       map.getCanvas().style.cursor = "pointer";
-    }
-  });
-
-  // change mouse tip upon leaving feature
-  map.on("mouseleave", "sw", function (e) {
-    map.getCanvas().style.cursor = "";
-  });
-  map.on("mouseenter", "sw", function (e) {
-    var msg =
-      "<p class='italic centered'>Click this <span class='green-text'> existing sidewalk </span> to learn more <br/> about nearby destinations</p>";
-
-    if (map.getZoom() > sw_zoom_threshold) {
+      var msg =
+        "<p class='italic centered'>Click this <span class='green-text'> existing sidewalk </span> to learn more <br/> about nearby destinations</p>";
       bindPopup(map, msg, e);
     }
   });
 
   // change mouse tip upon leaving feature
   map.on("mouseleave", "sw", function (e) {
+    map.getCanvas().style.cursor = "";
     clearPopups();
   });
 };
 
-export { wire_mouse_hover, sw_zoom_threshold };
+export { wire_mouse_hover, ZOOM_THRESHOLD_FOR_LINE_INTERACTION };

@@ -1,5 +1,6 @@
 import { set_text_to_div } from "./switches.js";
 import { nice_category_name_for_bullets } from "./text.js";
+import { fit_map_to_geojson } from "./zoom_to_layer.js";
 
 // GENERAL
 // HELPER
@@ -21,7 +22,7 @@ const api_url_base = () => {
   let local_api = "http://localhost:8000/api/mcosp/v1";
 
   if (current_env == "development") {
-    var url = local_api;
+    var url = production_api;
   } else {
     var url = production_api;
   }
@@ -283,6 +284,8 @@ const reload_gaps = (map, url) => {
       map.getSource("selected-gap").setData(json);
 
       map.setPaintProperty("gaps", "line-opacity", 0.5);
+
+      fit_map_to_geojson(map, json);
     }
   };
   request.send();
@@ -363,6 +366,8 @@ const reload_pois_near_gap = (map, uid) => {
       text += "</ul>";
 
       set_text_to_div(text, "stat-destinations");
+
+      fit_map_to_geojson(map, json);
     }
   };
   request.send();
@@ -422,6 +427,7 @@ const reload_pois_near_sw = (map, lngLat) => {
       text += "</ul>";
 
       set_text_to_div(text, "stat-destinations");
+      fit_map_to_geojson(map, json);
     }
   };
   request.send();

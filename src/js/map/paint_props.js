@@ -17,12 +17,12 @@ const paint_props = {
   all_pois: {
     id: "all_pois",
     attribute: "circle-radius",
-    style: ["interpolate", ["linear"], ["zoom"], 9.5, 1.8, 18, 8],
+    style: ["interpolate", ["linear"], ["zoom"], 9.5, 2.6, 18, 8],
   },
   all_pois_outline: {
     id: "all_pois",
     attribute: "circle-stroke-width",
-    style: ["interpolate", ["linear"], ["zoom"], 9.5, 0.4, 18, 2],
+    style: ["interpolate", ["linear"], ["zoom"], 9.5, 0.6, 18, 2],
   },
   selected_poi: {
     id: "selected_poi",

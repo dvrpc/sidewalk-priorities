@@ -12,6 +12,8 @@ import {
   hide_element,
   set_text_to_div,
 } from "./switches.js";
+import { remove_markers } from "./markers.js";
+import { pois_as_many_items } from "./text.js";
 
 const wire_poi_dropdown_behavior = (map) => {
   /**
@@ -27,26 +29,10 @@ const wire_poi_dropdown_behavior = (map) => {
    */
 
   var dropdown = document.getElementById("dropdown_category");
-  // var subtitle = document.getElementById("subtitle");
-
-  var subtitle_text = {
-    all: "All Points of Interest",
-    "Public School": "Public Schools",
-    "Private School": "Private Schools",
-    "School - College, University": "Colleges/Universities",
-    "Health Facility": "Health Care Facilities",
-    "Food Store": "Food Stores",
-    "Activity Center for Seniors or Disabled":
-      "Activity Centers for Senior/Disabled",
-    "Municipal Buildings": "Municipal Buildings",
-    trailhead: "Trailheads",
-    Libraries: "Libraries",
-    "Shopping Centers": "Shopping Centers",
-  };
 
   dropdown.addEventListener("change", function () {
     // Set the subtitle text
-    let text = subtitle_text[dropdown.value];
+    let text = pois_as_many_items[dropdown.value];
     set_text_to_div("@ " + text, "subtitle");
 
     if (dropdown.value == "all") {
@@ -70,11 +56,13 @@ const wire_poi_dropdown_behavior = (map) => {
     var muni_dropdown = document.getElementById("dropdown_muni");
     muni_dropdown.value = "...";
 
+    remove_markers();
+
     // Fly back to county zoom level
     map.flyTo({
       center: [-75.36277290123333, 40.201296611075346],
       zoom: 10,
-      essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+      essential: true,
     });
 
     hide_element("gap-legend");
@@ -85,8 +73,6 @@ const wire_poi_dropdown_behavior = (map) => {
 const wire_muni_dropdown_behavior = (map) => {
   /**
    * Set up the behavior for the dropdown selector
-   *
-   * Steps: TODO
    */
 
   var dropdown = document.getElementById("dropdown_muni");
@@ -102,6 +88,7 @@ const wire_muni_dropdown_behavior = (map) => {
 
     hide_layers(map);
     show_element("gap-legend");
+    remove_markers();
 
     show_element_inline("text-about-gap-click");
   });
