@@ -1,1 +1,0 @@
-(()=>{"use strict";var e,l=document.getElementsByClassName("accordion");for(e=0;e<l.length;e++)l[e].addEventListener("click",(function(){var e=document.getElementsByClassName("panel")[0];"block"===e.style.display?e.style.display="none":e.style.display="block"}))})();
